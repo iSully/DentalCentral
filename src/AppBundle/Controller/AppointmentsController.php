@@ -40,7 +40,7 @@ class AppointmentsController extends Controller
 
         return $this->render(
             '@App/appointments.html.twig',
-            array('form' => $form->createView(), 'appointments' => $appointments)
+            ['form' => $form->createView(), 'appointments' => $appointments]
         );
     }
 }
