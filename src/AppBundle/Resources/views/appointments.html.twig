@@ -1,0 +1,84 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div id="calendar"></div>
+
+    <div id="calendar-popup">
+        {{ form_start(form, {'class': 'event-form'}) }}
+        <ul>
+            <li>
+                {{ form_row(form.start) }}
+            </li>
+            <li>
+                {{ form_row(form.end) }}
+            </li>
+            <li>
+                {{ form_row(form.user) }}
+            </li>
+            <li>
+                {{ form_row(form.dentist) }}
+            </li>
+            <li>
+                {{ form_row(form.hygienist) }}
+            </li>
+            <li>
+                {{ form_row(form.type) }}
+            </li>
+            <div class="button">
+                <input type="submit"/>
+            </div>
+        </ul>
+        {{ form_end(form) }}
+
+        <div id="event">
+            <header></header>
+            <ul>
+                <li class="start-time">
+                    <p>Start</p>
+                    <time></time>
+                </li>
+                <li class="end-time">
+                    <p>End</p>
+                    <time></time>
+                </li>
+                <li>
+                    <p>at</p>
+                    <p class="location"></p>
+                </li>
+                <li>
+                    <p>Details:</p>
+                    <p class="details"></p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="prong">
+            <div class="bottom-prong-dk"></div>
+            <div class="bottom-prong-lt"></div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var events = [];
+
+        {% for appointment in appointments %}
+        events.push(
+            {
+                title: '{{ appointment.type }}',
+                start: '{{ appointment.start|date('Y-m-dTH:i') }}',
+                end: '{{ appointment.end|date('Y-m-dTH:i') }}',
+                dentist: '{{ appointment.dentist.name }}',
+                hygienist: '{{ appointment.hygienist.name }}',
+                user: '{{ appointment.user.name }}',
+                color: '#' + ({{ appointment.user.id / 10000 }} * 0xFFFFFF << 0).toString(16)
+            }
+        );
+        {% endfor %}
+    </script>
+    <script src="{{ asset('js/appointments.js') }}"></script>
+{% endblock %}

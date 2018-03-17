@@ -37,6 +37,7 @@ class User extends BaseUser
      */
     private $name;
 
+
     /**
      * @var Appointment[]
      *
@@ -47,9 +48,17 @@ class User extends BaseUser
     /**
      * @var Appointment[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="staff")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="dentist")
      */
-    private $staffAppointments;
+    private $dentistAppointments;
+
+
+    /**
+     * @var Appointment[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="hygienist")
+     */
+    private $hygienistAppointments;
 
     /**
      * User constructor.
@@ -57,6 +66,38 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * @return Appointment[]
+     */
+    public function getDentistAppointments()
+    {
+        return $this->dentistAppointments;
+    }
+
+    /**
+     * @param Appointment[] $dentistAppointments
+     */
+    public function setDentistAppointments($dentistAppointments)
+    {
+        $this->dentistAppointments = $dentistAppointments;
+    }
+
+    /**
+     * @return Appointment[]
+     */
+    public function getHygienistAppointments()
+    {
+        return $this->hygienistAppointments;
+    }
+
+    /**
+     * @param Appointment[] $hygienistAppointments
+     */
+    public function setHygienistAppointments($hygienistAppointments)
+    {
+        $this->hygienistAppointments = $hygienistAppointments;
     }
 
     /**

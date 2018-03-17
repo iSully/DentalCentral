@@ -37,15 +37,22 @@ class Appointment
     private $user;
 
     /**
-     * @var User[]
+     * @var User
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
-     * @ORM\JoinTable(name="appointment_staff_members",
-     *     joinColumns={@ORM\JoinColumn(name="appointment_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="dentistAppointments")
+     * @ORM\JoinColumn(name="dentist_id", referencedColumnName="id")
+     *
      */
-    private $staff;
+    private $dentist;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="hygienistAppointments")
+     * @ORM\JoinColumn(name="hygienist_id", referencedColumnName="id")
+     *
+     */
+    private $hygienist;
 
     /**
      * @var \DateTime
@@ -53,13 +60,6 @@ class Appointment
      * @ORM\Column(name="end", type="datetime")
      */
     private $end;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
 
     /**
      * @var string
@@ -127,27 +127,35 @@ class Appointment
     }
 
     /**
-     * Set staff
-     *
-     * @param User[] $staff
-     *
-     * @return Appointment
+     * @return User
      */
-    public function setStaff($staff)
+    public function getDentist()
     {
-        $this->staff = $staff;
-
-        return $this;
+        return $this->dentist;
     }
 
     /**
-     * Get staff
-     *
-     * @return User[]
+     * @param User $dentist
      */
-    public function getStaff()
+    public function setDentist($dentist)
     {
-        return $this->staff;
+        $this->dentist = $dentist;
+    }
+
+    /**
+     * @return User
+     */
+    public function getHygienist()
+    {
+        return $this->hygienist;
+    }
+
+    /**
+     * @param User $hygienist
+     */
+    public function setHygienist($hygienist)
+    {
+        $this->hygienist = $hygienist;
     }
 
     /**
@@ -172,30 +180,6 @@ class Appointment
     public function getEnd()
     {
         return $this->end;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Appointment
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**

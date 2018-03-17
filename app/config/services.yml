@@ -27,3 +27,8 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+
+    app.form.type.local_datetime:
+        class: AppBundle\Form\Type\LocalDateTimeType
+        tags:
+            - { name: form.type, alias: local_datetime }

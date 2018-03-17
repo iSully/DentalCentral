@@ -1,4 +1,127 @@
-.btn-block{
-    width:40% !important;
+.btn-block {
+    width: 40% !important;
     margin: auto;
+}
+
+#calendar-popup {
+    display: none;
+    position: absolute;
+    margin-bottom: 0;
+    padding: 0 1.33em;
+    z-index: 1000;
+
+    border: solid rgba(200, 200, 200, 0.75) 2px;
+    border-radius: 10px;
+    color: black;
+    background: #FFF;
+}
+
+#calendar-popup * {
+    display: block;
+}
+
+#calendar-popup header {
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 1em;
+    margin-bottom: 0.5em;
+}
+
+/* #calendar-popup button.close {
+  margin: 10px 10px 0 0;
+} */
+
+#calendar-popup label,
+#calendar-popup input,
+#calendar-popup textarea {
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#calendar-popup input {
+    margin-bottom: 0.5em;
+    padding: 0;
+}
+
+#calendar-popup time {
+    font-style: italic;
+    line-height: 1em;
+    margin-top: 0;
+}
+
+#calendar-popup form,
+#calendar-popup div#event {
+    margin: 0.75em 0 0.75em 0;
+    /*   padding-left: 20px; */
+}
+
+#calendar-popup li {
+    margin-bottom: 0.33em
+}
+
+#calendar-popup li.location,
+#calendar-popup li.details {
+    font-size: 0.85em;
+    color: #333;
+}
+
+#calendar-popup div.prong {
+    position: relative;
+    float: right;
+
+    bottom: 0;
+    right: 15px;
+
+    height: 0;
+    width: 20px;
+
+}
+
+#calendar-popup div.prong div.bottom-prong-dk {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    border: 10px solid;
+    border-color: rgba(200, 200, 200, 0.75) transparent;
+    border-bottom: 0;
+}
+
+#calendar-popup div.prong div.bottom-prong-lt {
+    position: relative;
+    top: -10px;
+    left: 2px;
+    width: 0;
+
+    border: 8px solid;
+    border-color: white transparent;
+    border-bottom: 0;
+}
+
+#calendar-popup div.prong div.top-prong-dk {
+    position: relative;
+    top: 2px;
+    left: 0;
+
+    border: 10px solid;
+    border-color: rgba(200, 200, 200, 0.75) transparent;
+    border-top: 0;
+}
+
+#calendar-popup div.prong div.top-prong-lt {
+    position: relative;
+    top: -6px;
+    left: 2px;
+    width: 0;
+
+    border: 8px solid;
+    border-color: white transparent;
+    border-top: 0;
+}
+
+.fc-slats tr {
+    height: 40px;
 }
