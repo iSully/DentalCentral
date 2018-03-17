@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <table>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>
+                    {{ user.username }}
+                </td>
+                <td>
+                    {{ user.email }}
+                </td>
+                <td>
+                    <a href="{{ path('edit_user', {'id': user.id }) }}">Edit User</a>
+                </td>
+                <td>
+                    <a href="{{ path('delete_user', {'id' : user.id}) }}">Delete User</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="login" id="loginDiv">
+
+        {{ form_start(form, {'class': 'form-signin'}) }}
+        <h1 class="h3 mb-3 font-weight-normal">Edit {{ user.username }}</h1>
+
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Update User</button>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
