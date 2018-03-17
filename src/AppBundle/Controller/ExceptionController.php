@@ -18,9 +18,13 @@ class ExceptionController extends Controller
                 $error = 'Unknown page requested';
                 break;
             default:
-                $error = sprintf('Unknown error occurred(%s): %s', $exception->getStatusCode(), $exception->getMessage());
+                $error = sprintf('Unknown error occurred(%s)', $exception->getStatusCode());
                 break;
         }
-        return $this->render('AppBundle::error.html.twig', ['error' => $error]);
+
+        return $this->render(
+            'AppBundle::error.html.twig',
+            ['error' => $error, 'exception' => $exception->getMessage()]
+        );
     }
 }

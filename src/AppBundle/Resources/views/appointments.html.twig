@@ -76,8 +76,9 @@
                 hygienist: '{{ appointment.hygienist.name }}',
                 user: '{{ appointment.user.name }}',
                 color: '#' + ({{ appointment.user.id / 10000 }} * 0xFFFFFF << 0).toString(16)
-            }
-        );
+        }
+        )
+        ;
         {% endfor %}
     </script>
     <script src="{{ asset('js/appointments.js') }}"></script>

@@ -26,9 +26,10 @@ class UserManagerController extends Controller
      */
     public function listAction(Request $request)
     {
-        return $this->render('@App/list_users.html.twig',
+        return $this->render(
+            '@App/list_users.html.twig',
             array(
-                'users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()
+                'users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll(),
             )
         );
     }
@@ -50,14 +51,21 @@ class UserManagerController extends Controller
             $user->setPassword($password);
 
             $entityManager = $this->getDoctrine()->getManager();
-            if ($entityManager->getRepository('AppBundle:User')->findOneBy(['username' => $user->getUsername()]) !== null) {
+            if ($entityManager->getRepository('AppBundle:User')->findOneBy(
+                    ['username' => $user->getUsername()]
+                ) !== null) {
                 $form->get('username')->addError(new FormError('Already a user with this username'));
-            } else if ($entityManager->getRepository('AppBundle:User')->findOneBy(['email' => $user->getEmail()]) !== null) {
-                $form->get('email')->addError(new FormError('Already a user with this email'));
             } else {
-                $entityManager->persist($user);
-                $entityManager->flush();
-                return $this->redirectToRoute('list_users');
+                if ($entityManager->getRepository('AppBundle:User')->findOneBy(
+                        ['email' => $user->getEmail()]
+                    ) !== null) {
+                    $form->get('email')->addError(new FormError('Already a user with this email'));
+                } else {
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+
+                    return $this->redirectToRoute('list_users');
+                }
             }
 
         }
@@ -86,6 +94,7 @@ class UserManagerController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
             return $this->redirectToRoute('list_users');
 
         }
@@ -100,11 +109,13 @@ class UserManagerController extends Controller
      *
      * @Route("/delete/{id}", name="delete_user")
      */
-    public function deleteAction(Request $request, $id){
+    public function deleteAction(Request $request, $id)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository("AppBundle:User")->findOneBy(['id' => $id]);
         $entityManager->remove($user);
         $entityManager->flush();
+
         return $this->redirectToRoute('list_users');
     }
 }

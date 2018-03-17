@@ -16,9 +16,12 @@ class DefaultController extends Controller
         $this->get('user_service')->getUser();
 
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'user' => $this->get('user_service')->getUser(),
-            'roles' => $this->get('user_service')->getRolesAsArray()
-        ]);
+        return $this->render(
+            'default/index.html.twig',
+            [
+                'user' => $this->get('user_service')->getUser(),
+                'roles' => $this->get('user_service')->getRolesAsArray(),
+            ]
+        );
     }
 }

@@ -27,17 +27,23 @@ class UserForm extends AbstractType
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
             ->add('name', TextType::class)
-            ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'first_options' => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat password')
-            ));
+            ->add(
+                'plainPassword',
+                RepeatedType::class,
+                array(
+                    'type' => PasswordType::class,
+                    'first_options' => array('label' => 'Password'),
+                    'second_options' => array('label' => 'Repeat password'),
+                )
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => User::class
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => User::class,
+            )
+        );
     }
 }

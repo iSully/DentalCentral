@@ -79,6 +79,16 @@ class Appointment
     }
 
     /**
+     * Get datetime
+     *
+     * @return \DateTime
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
      * Set datetime
      *
      * @param \DateTime $start
@@ -93,13 +103,13 @@ class Appointment
     }
 
     /**
-     * Get datetime
+     * Get user
      *
-     * @return \DateTime
+     * @return User
      */
-    public function getStart()
+    public function getUser()
     {
-        return $this->start;
+        return $this->user;
     }
 
     /**
@@ -114,16 +124,6 @@ class Appointment
         $this->user = $user;
 
         return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
@@ -159,6 +159,16 @@ class Appointment
     }
 
     /**
+     * Get end
+     *
+     * @return \DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
      * Set end
      *
      * @param \DateTime $end
@@ -173,13 +183,13 @@ class Appointment
     }
 
     /**
-     * Get end
+     * Get type
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getEnd()
+    public function getType()
     {
-        return $this->end;
+        return $this->type;
     }
 
     /**
@@ -194,16 +204,6 @@ class Appointment
         $this->type = $type;
 
         return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 }
 

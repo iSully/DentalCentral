@@ -31,12 +31,16 @@ class AppointmentsController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($appointment);
             $entityManager->flush();
+
             return $this->redirectToRoute('appointments');
         }
 
         /** @var Appointment[] $appointments */
         $appointments = $entityManager->getRepository("AppBundle:Appointment")->findAll();
 
-        return $this->render('@App/appointments.html.twig', array('form' => $form->createView(), 'appointments' => $appointments));
+        return $this->render(
+            '@App/appointments.html.twig',
+            array('form' => $form->createView(), 'appointments' => $appointments)
+        );
     }
 }

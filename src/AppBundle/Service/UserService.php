@@ -28,19 +28,21 @@ class UserService
         $this->container = $container;
     }
 
+    public function getRolesAsArray()
+    {
+        if ($this->getUser() === null) {
+            return [];
+        } else {
+            return $this->getUser()->getRoles();
+        }
+    }
+
     /**
      * @return User|null
      */
-    public function getUser() {
+    public function getUser()
+    {
         return ($user = $this->container->get('security.token_storage')->getToken()->getUser(
         )) != null && $user != 'anon.' ? $user : null;
-    }
-
-    public function getRolesAsArray(){
-        if ($this->getUser() === null){
-            return [];
-        }else {
-            return $this->getUser()->getRoles();
-        }
     }
 }

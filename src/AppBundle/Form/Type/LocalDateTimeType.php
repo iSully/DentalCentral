@@ -35,9 +35,11 @@ class LocalDateTimeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'format' => self::HTML5_FORMAT
-        ]);
+        $resolver->setDefaults(
+            [
+                'format' => self::HTML5_FORMAT,
+            ]
+        );
     }
 
     /**
