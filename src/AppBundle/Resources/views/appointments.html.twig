@@ -1,5 +1,9 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+    All appointments
+{% endblock %}
+
 {% block body %}
 
     <div id="calendar"></div>
@@ -75,7 +79,7 @@
                 dentist: '{{ appointment.dentist.name }}',
                 hygienist: '{{ appointment.hygienist.name }}',
                 user: '{{ appointment.user.name }}',
-                color: '#' + ({{ appointment.user.id / 10000 }} * 0xFFFFFF << 0).toString(16)
+                color: '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0).toString(16)
         }
         )
         ;

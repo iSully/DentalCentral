@@ -18,7 +18,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Entity
  * @ORM\Table("users")
  */
-class User extends Appointment
+class User extends BaseUser
 {
     /**
      * @var int
