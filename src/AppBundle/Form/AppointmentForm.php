@@ -26,7 +26,7 @@ class AppointmentForm extends AbstractType
             ->add(
                 'user',
                 EntityType::class,
-                array(
+                [
                     'class' => 'AppBundle\Entity\User',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('c')
@@ -37,12 +37,12 @@ class AppointmentForm extends AbstractType
                     },
                     'required' => true,
                     'label' => 'Topkek',
-                )
+                ]
             )
             ->add(
                 'dentist',
                 EntityType::class,
-                array(
+                [
                     'class' => 'AppBundle\Entity\User',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('c')
@@ -50,12 +50,12 @@ class AppointmentForm extends AbstractType
                             ->setParameter('roles', '%"ROLE_DENTIST"%');
                     },
                     'required' => true,
-                )
+                ]
             )
             ->add(
                 'hygienist',
                 EntityType::class,
-                array(
+                [
                     'class' => 'AppBundle\Entity\User',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('c')
@@ -63,22 +63,22 @@ class AppointmentForm extends AbstractType
                             ->setParameter('roles', '%"ROLE_HYGIENIST"%');
                     },
                     'required' => true,
-                )
+                ]
             )
-            ->add('start', LocalDateTimeType::class, array('widget' => 'single_text'))
+            ->add('start', LocalDateTimeType::class, ['widget' => 'single_text'])
             ->add(
                 'type',
                 ChoiceType::class,
-                array(
+                [
                     'choices' => [
                         'Cleaning' => 'cleaning',
                         'Filling' => 'filling',
                         'Tooth Removal' => 'tooth_removal',
                         'Surgery' => 'surgery',
                     ],
-                )
+                ]
             )
-            ->add('end', LocalDateTimeType::class, array('widget' => 'single_text'));
+            ->add('end', LocalDateTimeType::class, ['widget' => 'single_text']);
 
 
     }
@@ -86,9 +86,9 @@ class AppointmentForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
                 'data_class' => Appointment::class,
-            )
+            ]
         );
     }
 }

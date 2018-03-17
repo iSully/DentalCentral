@@ -30,20 +30,20 @@ class UserEditForm extends AbstractType
             ->add(
                 'plainPassword',
                 RepeatedType::class,
-                array(
+                [
                     'type' => PasswordType::class,
-                    'first_options' => array('label' => 'New Password'),
-                    'second_options' => array('label' => 'Repeat password'),
-                )
+                    'first_options' => ['label' => 'New Password'],
+                    'second_options' => ['label' => 'Repeat password'],
+                ]
             );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
                 'data_class' => User::class,
-            )
+            ]
         );
     }
 }

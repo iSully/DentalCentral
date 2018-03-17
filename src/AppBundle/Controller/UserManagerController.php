@@ -28,9 +28,9 @@ class UserManagerController extends Controller
     {
         return $this->render(
             '@App/list_users.html.twig',
-            array(
+            [
                 'users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll(),
-            )
+            ]
         );
     }
 
@@ -70,7 +70,7 @@ class UserManagerController extends Controller
 
         }
 
-        return $this->render('@App/create_user.html.twig', array('form' => $form->createView()));
+        return $this->render('@App/create_user.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -99,7 +99,7 @@ class UserManagerController extends Controller
 
         }
 
-        return $this->render('@App/edit_user.html.twig', array('form' => $form->createView(), 'user' => $user));
+        return $this->render('@App/edit_user.html.twig', ['form' => $form->createView(), 'user' => $user]);
     }
 
     /**
