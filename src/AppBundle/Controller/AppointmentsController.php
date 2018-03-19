@@ -16,6 +16,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AppointmentsController extends Controller
 {
+    public function checkOverlap(Appointment $new, Appointment $existing)
+    {
+        return ($new->getStart() < $existing->getEnd() && $existing->getStart() < $new->getEnd());
+    }
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -25,22 +30,65 @@ class AppointmentsController extends Controller
     public function addAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
+        $repository = $entityManager->getRepository("AppBundle:Appointment");
         $appointment = new Appointment();
         $form = $this->createForm(AppointmentForm::class, $appointment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($appointment);
-            $entityManager->flush();
+            $appointmentId = null;
+            
+            //Updates Appointment info when edited on calendar
+            //TODO: Resolve Overlapping
+            if (($appointmentId = $request->get('appointment_id')) !== null && strlen($appointmentId) > 0) {
+                $appointmentId = intval($appointmentId);
 
-            return $this->redirectToRoute('appointments');
+                $newAppointment = $appointment;
+                $appointment = $repository->findOneBy(['id' => $appointmentId]);
+                $appointment->setDentist($newAppointment->getDentist());
+                $appointment->setUser($newAppointment->getUser());
+                $appointment->setHygienist($newAppointment->getHygienist());
+                $appointment->setStart($newAppointment->getStart());
+                $appointment->setEnd($newAppointment->getEnd());
+            }
+
+            $error = null;
+            foreach ($repository->findAll() as $a) {
+                //TODO: FIX THIS IF STATEMENT TO WORK FOR UPDATED APPOINTMENTS
+                if ($appointmentId === null || $a->getId() !== $appointmentId) {
+                    if ($a->getDentist()->getId() == $appointment->getDentist()->getId()) {
+                        if ($this->checkOverlap($appointment, $a)) {
+                            $error = 'Dentist is already working a shift at this time';
+                        }
+                    }
+
+                    if ($error === null && $a->getHygienist()->getId() == $appointment->getHygienist()->getId()) {
+                        if ($this->checkOverlap($appointment, $a)) {
+                            // Manage error
+                            $error = 'Hygienist is already working a shift at this time';
+                        }
+                    }
+                    if ($error === null && $a->getUser()->getId() == $appointment->getUser()->getId()) {
+                        if ($this->checkOverlap($appointment, $a)) {
+                            $error = 'Client already has an appointment at this time';
+                        }
+                    }
+                }
+            }
+
+            if ($error === null) {
+                $entityManager->persist($appointment);
+                $entityManager->flush();
+            }
+
+            return $this->redirectToRoute('appointments', ['error' => $error]);
         }
 
         /** @var Appointment[] $appointments */
-        $appointments = $entityManager->getRepository("AppBundle:Appointment")->findAll();
+        $appointments = $repository->findAll();
 
         return $this->render(
             '@App/appointments.html.twig',
-            ['form' => $form->createView(), 'appointments' => $appointments]
+            ['form' => $form->createView(), 'appointments' => $appointments, 'error' => $request->get('error')]
         );
     }
 }

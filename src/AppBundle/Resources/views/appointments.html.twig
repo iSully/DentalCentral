@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block body %}
+    {% if error != null %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
 
     <div id="calendar"></div>
 
     <div id="calendar-popup">
         {{ form_start(form, {'class': 'event-form'}) }}
         <ul>
+            <input type="hidden" name="appointment_id" id="appointment_id"/>
             <li>
                 {{ form_row(form.start) }}
             </li>
@@ -73,6 +79,7 @@
         {% for appointment in appointments %}
         events.push(
             {
+                id: '{{ appointment.id }}',
                 title: '{{ appointment.type }}',
                 start: '{{ appointment.start|date('Y-m-dTH:i') }}',
                 end: '{{ appointment.end|date('Y-m-dTH:i') }}',
@@ -80,7 +87,7 @@
                 hygienist: '{{ appointment.hygienist.name }}',
                 user: '{{ appointment.user.name }}',
                 color: '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0).toString(16)
-        }
+            }
         )
         ;
         {% endfor %}

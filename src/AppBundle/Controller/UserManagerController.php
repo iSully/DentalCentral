@@ -46,9 +46,12 @@ class UserManagerController extends Controller
         $form = $this->createForm(UserForm::class, $user);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
+
+            $user->setRoles([$user->getStaffRole()]);
 
             $entityManager = $this->getDoctrine()->getManager();
             if ($entityManager->getRepository('AppBundle:User')->findOneBy(

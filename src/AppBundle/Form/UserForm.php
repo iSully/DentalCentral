@@ -11,6 +11,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -24,9 +25,24 @@ class UserForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add(
+                'staffRole',
+                ChoiceType::class,
+                [
+                    'choices' => [
+                        'User' => 'ROLE_USER',
+                        'Dentist' => 'ROLE_DENTIST',
+                        'Hygienist' => 'ROLE_HYGIENIST',
+                        'Admin' => 'ROLE_ADMIN',
+                    ],
+                    'label' => 'User Role',
+                    'required' => true,
+                    'multiple' => false,
+                ]
+            )
+            ->add('name', TextType::class)
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
-            ->add('name', TextType::class)
             ->add(
                 'plainPassword',
                 RepeatedType::class,
@@ -35,7 +51,9 @@ class UserForm extends AbstractType
                     'first_options' => ['label' => 'Password'],
                     'second_options' => ['label' => 'Repeat password'],
                 ]
+
             );
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

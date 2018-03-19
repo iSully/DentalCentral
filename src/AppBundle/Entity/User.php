@@ -61,6 +61,11 @@ class User extends BaseUser
     private $hygienistAppointments;
 
     /**
+     * @var string
+     */
+    protected $staffRole;
+
+    /**
      * User constructor.
      */
     public function __construct()
@@ -114,6 +119,22 @@ class User extends BaseUser
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStaffRole()
+    {
+        return $this->staffRole;
+    }
+
+    /**
+     * @param string $staffRole
+     */
+    public function setStaffRole($staffRole)
+    {
+        $this->staffRole = $staffRole;
     }
 
 
