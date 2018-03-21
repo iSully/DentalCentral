@@ -20,23 +20,6 @@ class AppointmentsController extends Controller
     /*
      * Checks for overlapping schedule events. Verification before adding to DB in addAction()
      */
-    public function checkOverlap(Appointment $new, Appointment $existing)
-    {
-        return ($new->getStart() < $existing->getEnd() && $existing->getStart() < $new->getEnd());
-    }
-
-
-    /**
-     * @param Request $request
-     *
-     */
-    //TODO: DELETE APPOINTMENT FUNCTION
-//    public function deleteAction(Request $request){
-//        $entityManager = $this->getDoctrine()->getManager();
-//        $repository = $entityManager->getRepository("AppBundle:Appointment");
-//        $appointment = new Appointment();
-//    }
-
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -52,7 +35,7 @@ class AppointmentsController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $appointmentId = null;
-            
+
             //Updates Appointment info when edited on calendar
             //TODO: Resolve Overlapping
             if (($appointmentId = $request->get('appointment_id')) !== null && strlen($appointmentId) > 0) {
@@ -109,5 +92,22 @@ class AppointmentsController extends Controller
             '@App/appointments.html.twig',
             ['form' => $form->createView(), 'appointments' => $appointments, 'error' => $request->get('error')]
         );
+    }
+
+
+    /**
+     * @param Request $request
+     *
+     */
+    //TODO: DELETE APPOINTMENT FUNCTION
+//    public function deleteAction(Request $request){
+//        $entityManager = $this->getDoctrine()->getManager();
+//        $repository = $entityManager->getRepository("AppBundle:Appointment");
+//        $appointment = new Appointment();
+//    }
+
+    public function checkOverlap(Appointment $new, Appointment $existing)
+    {
+        return ($new->getStart() < $existing->getEnd() && $existing->getStart() < $new->getEnd());
     }
 }

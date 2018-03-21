@@ -36,7 +36,7 @@
                 {{ form_row(form.type) }}
             </li>
             {#<li>#}
-                {#{{ form_row(form.delete) }}#}
+            {#{{ form_row(form.delete) }}#}
             {#</li>#}
             <div class="button">
                 <input class="btn btn-success" type="submit"/>
@@ -84,14 +84,14 @@
             {
                 id: '{{ appointment.id }}',
                 //TODO: Find way to display  - D: {{ appointment.dentist }} - H: {{ appointment.hygienist }} - C: {{ appointment.user.name }} cleanly in title
-                title: '{{ appointment.type }} - {{ appointment.user.name}}',
+                title: '{{ appointment.type }} - {{ appointment.user.name }}',
                 start: '{{ appointment.start|date('Y-m-dTH:i') }}',
                 end: '{{ appointment.end|date('Y-m-dTH:i') }}',
                 dentist: '{{ appointment.dentist.name }}',
                 hygienist: '{{ appointment.hygienist.name }}',
                 user: '{{ appointment.user.name }}',
                 color: '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0).toString(16)
-            }
+        }
         )
         ;
         {% endfor %}

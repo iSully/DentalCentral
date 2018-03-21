@@ -81,7 +81,6 @@ class AppointmentForm extends AbstractType
             ->add('end', LocalDateTimeType::class, ['widget' => 'single_text']);
 
 
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
