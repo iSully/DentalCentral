@@ -135,5 +135,19 @@ class User extends BaseUser
         $this->staffRole = $staffRole;
     }
 
+    /**
+     * @return Appointment[]
+     */
+    public function getAppointments()
+    {
+        return $this->appointments;
+    }
 
+    /**
+     * @param Appointment[] $appointments
+     */
+    public function setAppointments($appointments)
+    {
+        $this->appointments = $appointments;
+    }
 }

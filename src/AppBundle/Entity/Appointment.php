@@ -246,5 +246,37 @@ class Appointment
     {
         $this->notifications = $notifications;
     }
+
+    /**
+     * @return CancellationRequest
+     */
+    public function getCancellationRequest()
+    {
+        return $this->cancellationRequest;
+    }
+
+    /**
+     * @param CancellationRequest $cancellationRequest
+     */
+    public function setCancellationRequest($cancellationRequest)
+    {
+        $this->cancellationRequest = $cancellationRequest;
+    }
+
+    /**
+     * @return ModificationRequest
+     */
+    public function getModificationRequest()
+    {
+        return $this->modificationRequest;
+    }
+
+    /**
+     * @param ModificationRequest $modificationRequest
+     */
+    public function setModificationRequest($modificationRequest)
+    {
+        $this->modificationRequest = $modificationRequest;
+    }
 }
 
