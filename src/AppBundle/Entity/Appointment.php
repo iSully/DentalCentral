@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Appointment
  *
  * @ORM\Table(name="appointment")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AppointmentRepository")
  */
 class Appointment
 {
