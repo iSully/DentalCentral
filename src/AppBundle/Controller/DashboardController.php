@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
 class DashboardController extends Controller
 {
     /**
+     * Displays User Dashboard
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -30,11 +32,11 @@ class DashboardController extends Controller
     }
 
     public function cancelAction(Request $request, $appointmentId){
-
+        $appointment = $this->getDoctrine()->getRepository('AppBundle:Appointment')->find($appointmentId);
     }
 
     public function modifyAction(Request $request, $appointmentId){
-
+        $appointment = $this->getDoctrine()->getRepository('AppBundle:Appointment')->find($appointmentId);
     }
 
 }
