@@ -37,7 +37,6 @@ class AppointmentsController extends Controller
             $appointmentId = null;
 
             //Updates Appointment info when edited on calendar
-            //TODO: Resolve Overlapping
             if (($appointmentId = $request->get('appointment_id')) !== null && strlen($appointmentId) > 0) {
                 $appointmentId = intval($appointmentId);
 
@@ -54,9 +53,12 @@ class AppointmentsController extends Controller
             $repository = $entityManager->getRepository("AppBundle:Appointment");
 
             $error = null;
+            if($appointment->getStart() > $appointment->getEnd()){
+                $error = 'Cannot have an appointment end before it\'s selected start time';
+            }
             foreach ($repository->findAll() as $a) {
-                //TODO: FIX THIS IF STATEMENT TO WORK FOR UPDATED APPOINTMENTS
-                if ($appointmentId === null || $a->getId() !== $appointmentId) {
+
+                if ($error === null && $appointmentId === null || $a->getId() !== $appointmentId) {
                     if ($a->getDentist()->getId() == $appointment->getDentist()->getId()) {
                         if ($this->checkOverlap($appointment, $a)) {
                             $error = 'Dentist is already working a shift at this time';
@@ -82,15 +84,23 @@ class AppointmentsController extends Controller
                 $entityManager->flush();
             }
 
-            return $this->redirectToRoute('appointments', ['error' => $error]);
+            $this->get('session')->getFlashBag()->add('errors', $error);
+
+
+            return $this->redirectToRoute('appointments');
         }
 
         /** @var Appointment[] $appointments */
         $appointments = $repository->findAll();
 
+        $returnedError = null;
+        if (($sessionError = $this->get('session')->getFlashBag()->get('errors')) !== null && count($sessionError) > 0){
+            $returnedError = $sessionError[0];
+        }
+
         return $this->render(
             '@App/appointments.html.twig',
-            ['form' => $form->createView(), 'appointments' => $appointments, 'error' => $request->get('error')]
+            ['form' => $form->createView(), 'appointments' => $appointments, 'error' => $returnedError]
         );
     }
 

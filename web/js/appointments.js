@@ -76,7 +76,7 @@ $(document).ready(function () {
             right: 'agendaWeek,agendaDay'
         },
         timezone: 'local',
-        defaultView: 'agendaDay',
+        defaultView: 'agendaWeek',
         allDayDefault: false,
         allDaySlot: false,
         slotEventOverlap: true,
