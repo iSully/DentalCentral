@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Request\CancellationRequest;
+use AppBundle\Entity\Request\ModificationRequest;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -67,6 +69,29 @@ class Appointment
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
+
+    /**
+     * @var Notification[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Notification", mappedBy="appointment")
+     */
+    private $notifications;
+
+    /**
+     * @var CancellationRequest
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Request\CancellationRequest", inversedBy="appointment")
+     * @ORM\JoinColumn(name="cancel_id", referencedColumnName="id")
+     */
+    private $cancellationRequest;
+
+    /**
+     * @var ModificationRequest
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Request\ModificationRequest", inversedBy="appointment")
+     * @ORM\JoinColumn(name="modification_id", referencedColumnName="id")
+     */
+    private $modificationRequest;
 
     /**
      * Get id
@@ -204,6 +229,22 @@ class Appointment
         $this->type = $type;
 
         return $this;
+    }
+
+    /**
+     * @return Notification[]
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * @param Notification[] $notifications
+     */
+    public function setNotifications($notifications)
+    {
+        $this->notifications = $notifications;
     }
 }
 

@@ -16,10 +16,26 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AppointmentsController extends Controller
 {
+
+    /*
+     * Checks for overlapping schedule events. Verification before adding to DB in addAction()
+     */
     public function checkOverlap(Appointment $new, Appointment $existing)
     {
         return ($new->getStart() < $existing->getEnd() && $existing->getStart() < $new->getEnd());
     }
+
+
+    /**
+     * @param Request $request
+     *
+     */
+    //TODO: DELETE APPOINTMENT FUNCTION
+//    public function deleteAction(Request $request){
+//        $entityManager = $this->getDoctrine()->getManager();
+//        $repository = $entityManager->getRepository("AppBundle:Appointment");
+//        $appointment = new Appointment();
+//    }
 
     /**
      * @param Request $request
@@ -50,6 +66,9 @@ class AppointmentsController extends Controller
                 $appointment->setStart($newAppointment->getStart());
                 $appointment->setEnd($newAppointment->getEnd());
             }
+
+            //Update repository to track and manage updated appointments
+            $repository = $entityManager->getRepository("AppBundle:Appointment");
 
             $error = null;
             foreach ($repository->findAll() as $a) {

@@ -28,7 +28,10 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
+    /**
+     * @var string
+     */
+    protected $staffRole;
     /**
      * @var string
      *
@@ -36,34 +39,24 @@ class User extends BaseUser
      *
      */
     private $name;
-
-
     /**
      * @var Appointment[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="user")
      */
     private $appointments;
-
     /**
      * @var Appointment[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="dentist")
      */
     private $dentistAppointments;
-
-
     /**
      * @var Appointment[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="hygienist")
      */
     private $hygienistAppointments;
-
-    /**
-     * @var string
-     */
-    protected $staffRole;
 
     /**
      * User constructor.

@@ -93,7 +93,7 @@ $(document).ready(function () {
         events: function (start, end, timezone, callback) {
             callback(events);
         },
-        eventColor: '#378006',
+        // eventColor: '#378006',
         eventClick: function (calEvent, jsEvent) {
             renderPopup(jsEvent, calEvent.start, calEvent.end, calEvent);
         },
