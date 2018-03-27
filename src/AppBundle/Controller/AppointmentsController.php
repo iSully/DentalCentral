@@ -39,9 +39,7 @@ class AppointmentsController extends Controller
             //Updates Appointment info when edited on calendar
             if (($appointmentId = $request->get('appointment_id')) !== null && strlen($appointmentId) > 0) {
                 $appointmentId = intval($appointmentId);
-                if (isset($_POST['btnDelete'])) {
-                    $this->deleteAction($request, $appointmentId);
-
+                if(isset($_POST['btnDelete'])){
                     return $this->deleteAction($request, $appointmentId);
 
                 }
@@ -59,7 +57,7 @@ class AppointmentsController extends Controller
             $repository = $entityManager->getRepository("AppBundle:Appointment");
 
             $error = null;
-            if ($appointment->getStart() > $appointment->getEnd()) {
+            if($appointment->getStart() > $appointment->getEnd()){
                 $error = 'Cannot have an appointment end before it\'s selected start time';
             }
             foreach ($repository->findAll() as $a) {
@@ -100,9 +98,7 @@ class AppointmentsController extends Controller
         $appointments = $repository->findAll();
 
         $returnedError = null;
-        if (($sessionError = $this->get('session')->getFlashBag()->get('errors')) !== null && count(
-                $sessionError
-            ) > 0) {
+        if (($sessionError = $this->get('session')->getFlashBag()->get('errors')) !== null && count($sessionError) > 0){
             $returnedError = $sessionError[0];
         }
 
@@ -119,14 +115,12 @@ class AppointmentsController extends Controller
      * @Route("/delete/{appointmentId}")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Request $request, $appointmentId)
-    {
+    public function deleteAction(Request $request, $appointmentId){
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $entityManager->getRepository("AppBundle:Appointment");
         $appointment = $repository->find($appointmentId);
         $entityManager->remove($appointment);
         $entityManager->flush();
-
         return $this->redirectToRoute('appointments');
     }
 
