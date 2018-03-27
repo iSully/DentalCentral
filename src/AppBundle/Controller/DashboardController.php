@@ -26,8 +26,14 @@ class DashboardController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
-        $appointments = $this->get('user_service')->getUser()->getAppointments();
+        $userRoles = $this->get('user_service')->getUser()->getRoles();
+        if(array_search("ROLE_DENTIST", $userRoles) !== false){
+            $appointments = $this->get('user_service')->getUser()->getDentistAppointments();
+        }else if(array_search("ROLE_HYGIENIST", $userRoles) !== false){
+            $appointments = $this->get('user_service')->getUser()->getHygienistAppointments();
+        }else{
+            $appointments = $this->get('user_service')->getUser()->getAppointments();
+        }
         return $this->render('@App/dashboard.html.twig', array('appointments' => $appointments));
     }
 

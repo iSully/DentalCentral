@@ -4,6 +4,15 @@
 
     <table>
         <tbody>
+        <tr>
+            <td>Username</td>
+            <td>Email</td>
+            <td>User Type</td>
+            <td colspan="2">Options</td>
+        </tr>
+        <tr>
+            <td colspan="5"> <hr /></td>
+        </tr>
         {% for user in users %}
             <tr>
                 <td>
@@ -11,6 +20,9 @@
                 </td>
                 <td>
                     {{ user.email }}
+                </td>
+                <td>
+                    {{ user.roles[0][5:]}}
                 </td>
                 <td>
                     <a href="{{ path('edit_user', {'id': user.id }) }}">Edit User</a>

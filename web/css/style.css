@@ -125,3 +125,7 @@
 .fc-slats tr {
     height: 40px;
 }
+.btn-danger{
+    width: 100% !important;
+    margin:auto;
+}

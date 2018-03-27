@@ -64,6 +64,7 @@ class UserManagerController extends Controller
                     ) !== null) {
                     $form->get('email')->addError(new FormError('Already a user with this email'));
                 } else {
+                    $user->setEnabled(true);
                     $entityManager->persist($user);
                     $entityManager->flush();
 

@@ -20,7 +20,7 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_HYGENIST:    ROLE_USER
+        ROLE_HYGIENIST:    ROLE_USER
         ROLE_DENTIST:     ROLE_USER
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
@@ -35,4 +35,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/users/, role: ROLE_ADMIN}
-        - { path: ^/appointments/, role: ROLE_USER}
+        - { path: ^/appointments/, role: ROLE_ADMIN}
+        - { path: ^/dashboard/, role: ROLE_USER}

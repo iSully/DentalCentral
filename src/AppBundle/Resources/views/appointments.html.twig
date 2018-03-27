@@ -38,8 +38,11 @@
             {#<li>#}
             {#{{ form_row(form.delete) }}#}
             {#</li>#}
-            <div class="button">
+            <div class="submit-button">
                 <input class="btn btn-success" type="submit"/>
+            </div>
+            <div class="delete-button">
+                <button type="submit" name="btnDelete" class="btn-danger">Delete</button>
             </div>
         </ul>
         {{ form_end(form) }}
@@ -84,7 +87,7 @@
             {
                 id: '{{ appointment.id }}',
                 //TODO: Find way to display  - D: {{ appointment.dentist }} - H: {{ appointment.hygienist }} - C: {{ appointment.user.name }} cleanly in title
-                title: '{{ appointment.type }} - {{ appointment.user.name }}',
+                title: '{{ appointment.type }} - Client: {{ appointment.user.name }} - D: {{ appointment.dentist.name }}',
                 start: '{{ appointment.start|date('Y-m-dTH:i') }}',
                 end: '{{ appointment.end|date('Y-m-dTH:i') }}',
                 dentist: '{{ appointment.dentist.name }}',
