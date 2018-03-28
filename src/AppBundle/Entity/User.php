@@ -150,4 +150,27 @@ class User extends BaseUser
     {
         $this->appointments = $appointments;
     }
+
+    /**
+     * @return string
+     */
+    public function getRole()
+    {
+        $roles = $this->getRoles();
+        if (count($roles) > 0) {
+            return ucwords(substr(strtolower($roles[0]), 5));
+        }
+
+        return 'Unknown';
+    }
+
+    public function isDentist()
+    {
+        return $this->getRole() === 'Dentist';
+    }
+
+    public function isHygienist()
+    {
+        return $this->getRole() === 'Hygienist';
+    }
 }

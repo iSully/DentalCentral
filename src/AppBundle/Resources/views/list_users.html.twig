@@ -22,7 +22,8 @@
                     {{ user.email }}
                 </td>
                 <td>
-                    {{ user.roles[0][5:]}}
+                    {{ user.role }}
+                    {#{{ user.roles[0][5:]}}#}
                 </td>
                 <td>
                     <a href="{{ path('edit_user', {'id': user.id }) }}">Edit User</a>
