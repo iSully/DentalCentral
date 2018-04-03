@@ -43,6 +43,30 @@ class User extends BaseUser
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=10)
+     */
+    private $phone;
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+
+    /**
      * @var Appointment[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="user")

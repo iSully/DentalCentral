@@ -26,6 +26,7 @@ class UserEditForm extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('name', TextType::class)
+            ->add('phone', TextType::class)
             ->add('username', TextType::class)
             ->add(
                 'plainPassword',

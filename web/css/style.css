@@ -142,6 +142,7 @@ p.testtt{
 }
 
 div.login{
+    border-radius:8px;
     width:60%;
     margin:auto;
     margin-top:25px;
@@ -171,6 +172,7 @@ div.register-now{
     background-color: #FFA38D;
     padding:20px;
     width:60%;
+    border-radius:8px;
 }
 h2#register-header{
     padding-bottom:15px;
@@ -185,4 +187,36 @@ input.login-submit{
     border-radius:8px;
     width:75px;
     background-color: #FFFFFF;
+}
+
+input[id=fos_user_registration_form_email]{
+    width:20%;
+    margin:10px;
+}
+div.register-div label{
+    width:125px;
+    margin-right:10px;
+}
+input[id=fos_user_registration_form_username]{
+    width:20%;
+
+}
+
+div.register-div input{
+    margin: 5px;
+    width:180px;
+}
+
+div.register-div{
+    border-radius:8px;
+    width:60%;
+    margin:auto;
+    margin-top:25px;
+    padding:15px;
+    background-color: #87ceeb;
+}
+
+input.register-submit{
+    border-radius:8px;
+    margin-top:15px !important;
 }
