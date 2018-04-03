@@ -129,3 +129,60 @@
     width: 100% !important;
     margin:auto;
 }
+
+img.logo-login{
+    margin:15px;
+    border:3px solid black;
+    border-radius:50px;
+
+}
+p.testtt{
+   color: #0000F0;
+    font-size:50px;
+}
+
+div.login{
+    width:60%;
+    margin:auto;
+    margin-top:25px;
+    padding:15px;
+    background-color: #87ceeb;
+}
+
+input#password-login{
+    margin:auto;
+    width:35%;
+}
+
+input#username-login{
+    margin:auto;
+    width:35%;
+}
+label.label-username{
+    width:75px;
+}
+
+label.label-password{
+    width:75px;
+}
+
+div.register-now{
+    margin: 20px auto auto;
+    background-color: #FFA38D;
+    padding:20px;
+    width:60%;
+}
+h2#register-header{
+    padding-bottom:15px;
+}
+
+button.btn-register{
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
+
+input.login-submit{
+    border-radius:8px;
+    width:75px;
+    background-color: #FFFFFF;
+}

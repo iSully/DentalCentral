@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{%  block head %}
+    <title>{% block title %}Login - Dental Central {% endblock title %}</title>
+{%  endblock head %}
+
+{% block body %}
+    <div class="login">
+    <img class="logo-login" src="{{ asset('images/logo.png') }}" alt="" width="100" height="100">
+    <h1>Log in to Dental Central</h1>
+    {% block login %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+
+            <label class="label-username" for="username">Username</label>
+            <input type="text" id="username-login" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+            <br>
+            <label class="label-password" for="password">Password</label>
+            <input type="password" id="password-login" name="_password" required="required" autocomplete="current-password" />
+            <br>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">Remember me?</label>
+            <br>
+            <input type="submit" class="login-submit" id="_submit" name="_submit" value="Login" />
+        </form>
+        </div>
+    {% endblock login %}
+
+    {% block register %}
+        <div class="register-now">
+            <h2 id="register-header">New to Dental Central?</h2>
+            <form action="/register">
+                <button type="submit" class="btn-register">Register Now!</button>
+            </form>
+        </div>
+        {% endblock register %}
+{% endblock body %}
+
