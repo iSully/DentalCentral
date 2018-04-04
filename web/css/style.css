@@ -272,8 +272,6 @@ ul {
 li {
     float: left;
     display:inline;
-    margin:auto;
-    height:100%;
 }
 
 li a {
@@ -282,7 +280,6 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    height:100%;
 }
 
 li.login{
@@ -306,4 +303,8 @@ a:hover:not(.active) {
 li.nav-logo{
     float:left;
     display:inline;
+}
+
+li.nav-logo a.logo{
+    padding:0;
 }
