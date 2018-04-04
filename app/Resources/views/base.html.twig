@@ -23,20 +23,21 @@
     <body class="text-center">
 
     <ul id="nav">
-        <li class="nav-logo"><a class="logo" href="/dashboard"><img width="60" height="60" src="{{ asset('images/logo.png') }}" alt="Dental Central Logo"></a></li>
-        <li class="dashboard"><a id="dashboard" class="active" href="/dashboard">My Account</a></li>
-        <li class="login"><a class="login" href="/login">Log in</a></li>
-        <li class="register"><a class="register" href="/register">Sign Up</a></li>
+        <li class="nav-logo"><a class="nav-logo" href="/dashboard"><img width="60" height="60" src="{{ asset('images/logo.png') }}" alt="Dental Central Logo"></a></li>
+        <li class="nav-dashboard"><a class="nav-dashboard active" href="/dashboard">My Account</a></li>
+        <li class="nav-login"><a class="nav-login" href="/login">Log in</a></li>
+        <li class="nav-register"><a class="nav-register" href="/register">Sign Up</a></li>
     </ul>
     <script>
         {% if app.user == false %}
-        $(".dashboard a").css("display", "none");
+        $(".nav-dashboard a").css("display", "none");
         {% endif %}
         {% if app.user %}
-        $(".login a").attr("href", "/logout").text("Log Out");
-        $(".register a").css("display", "none");
+        $(".nav-login a").attr("href", "/logout").text("Log Out");
+        $(".nav-register a").css("display", "none");
         {% endif %}
     </script>
+    <br>
         {% block body %}{% endblock %}
 
         {% block javascripts %}{% endblock %}

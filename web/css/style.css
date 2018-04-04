@@ -261,7 +261,7 @@ h1.dashboard-welcome {
     margin-top: 15px;
 }
 
-ul {
+ul#nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -269,12 +269,12 @@ ul {
     background-color: #333;
 }
 
-li {
+li[class |= nav] {
     float: left;
     display: inline;
 }
 
-li a {
+li a[class |= nav]{
     display: block;
     color: white;
     text-align: center;
@@ -282,12 +282,12 @@ li a {
     text-decoration: none;
 }
 
-li.login {
+li.nav-login {
     float: right;
     margin: auto;
 }
 
-li.register {
+li.nav-register {
     float: right;
 }
 
