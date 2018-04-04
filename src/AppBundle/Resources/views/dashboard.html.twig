@@ -1,10 +1,13 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-    Your appointments
+    Dashboard - Dental Central
 {% endblock %}
 
 {% block body %}
+    <script>
+       console.log({{ user.name }})
+    </script>
     <h1 class="dashboard-welcome">Welcome back, {{ user.name }}</h1>
 
     <div id="calendar"></div>

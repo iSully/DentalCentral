@@ -258,6 +258,7 @@ img.logo-register-confirm{
 h1.dashboard-welcome{
     color: #FFA949;
     margin-bottom:10px;
+    margin-top:15px;
 }
 
 ul {
@@ -270,6 +271,9 @@ ul {
 
 li {
     float: left;
+    display:inline;
+    margin:auto;
+    height:100%;
 }
 
 li a {
@@ -278,10 +282,12 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    height:100%;
 }
 
 li.login{
     float:right;
+    margin:auto;
 }
 
 li.register{
@@ -294,4 +300,10 @@ a:hover:not(.active) {
 
 .active {
     background-color:#87ceeb;
+}
+
+
+li.nav-logo{
+    float:left;
+    display:inline;
 }

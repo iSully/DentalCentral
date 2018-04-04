@@ -15,19 +15,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
 
     {% block stylesheets %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
     <body class="text-center">
-    <ul>
-        <li><a class="active" href="/dashboard">My Account</a></li>
+
+    <ul id="nav">
+        <li class="nav-logo"><a class="logo" href="/dashboard"><img width="60" height="60" src="{{ asset('images/logo.png') }}" alt="Dental Central Logo"></a></li>
+        <li class="dashboard"><a id="dashboard" class="active" href="/dashboard">My Account</a></li>
         <li class="login"><a class="login" href="/login">Log in</a></li>
         <li class="register"><a class="register" href="/register">Sign Up</a></li>
     </ul>
+    <script>
+        {% if app.user == false %}
+        $(".dashboard a").css("display", "none");
+        {% endif %}
+        {% if app.user %}
+        $(".login a").attr("href", "/logout").text("Log Out");
+        $(".register a").css("display", "none");
+        {% endif %}
+    </script>
         {% block body %}{% endblock %}
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
