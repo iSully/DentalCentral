@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {%  block head %}
-    <title>{% block title %}Login - Dental Central {% endblock title %}</title>
+    {% block title %}Login - Dental Central {% endblock title %}
 {%  endblock head %}
 
 {% block body %}
@@ -10,7 +10,7 @@
     <h1>Log in to Dental Central</h1>
     {% block login %}
 
-        <form action="{{ path("fos_user_security_check") }}" method="post">
+        <form name="login" action="{{ path("fos_user_security_check") }}" method="post">
             {% if csrf_token %}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
             {% endif %}

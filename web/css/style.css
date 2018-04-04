@@ -125,98 +125,173 @@
 .fc-slats tr {
     height: 40px;
 }
-.btn-danger{
+
+.btn-danger {
     width: 100% !important;
+    margin: auto;
+}
+
+img.logo-login {
     margin:auto;
-}
-
-img.logo-login{
-    margin:15px;
-    border:3px solid black;
-    border-radius:50px;
+    border: 3px solid black;
+    border-radius: 50px;
 
 }
-p.testtt{
-   color: #0000F0;
-    font-size:50px;
-}
 
-div.login{
-    border-radius:8px;
-    width:60%;
-    margin:auto;
-    margin-top:25px;
-    padding:15px;
+div.login {
+    border-radius: 8px;
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+    padding: 15px;
     background-color: #87ceeb;
 }
 
-input#password-login{
-    margin:auto;
-    width:35%;
+input#password-login {
+    margin: auto;
+    width: 35%;
 }
 
-input#username-login{
-    margin:auto;
-    width:35%;
-}
-label.label-username{
-    width:75px;
+input#username-login {
+    margin: auto;
+    width: 35%;
 }
 
-label.label-password{
-    width:75px;
+label.label-username {
+    width: 75px;
 }
 
-div.register-now{
+label.label-password {
+    width: 75px;
+}
+
+div.register-now {
     margin: 20px auto auto;
     background-color: #FFA38D;
-    padding:20px;
-    width:60%;
-    border-radius:8px;
-}
-h2#register-header{
-    padding-bottom:15px;
+    padding: 20px;
+    width: 60%;
+    border-radius: 8px;
 }
 
-button.btn-register{
+h2#register-header {
+    padding-bottom: 15px;
+}
+
+button.btn-register {
     background-color: #FFFFFF;
     border-radius: 8px;
 }
 
-input.login-submit{
-    border-radius:8px;
-    width:75px;
+input.login-submit {
+    border-radius: 8px;
+    width: 75px;
     background-color: #FFFFFF;
 }
 
-input[id=fos_user_registration_form_email]{
-    width:20%;
-    margin:10px;
+input[id=fos_user_registration_form_email] {
+    width: 20%;
+    margin: 10px;
 }
-div.register-div label{
-    width:125px;
-    margin-right:10px;
+
+div.register-div label {
+    width: 125px;
+    margin-right: 10px;
 }
-input[id=fos_user_registration_form_username]{
-    width:20%;
+
+input[id=fos_user_registration_form_username] {
+    width: 20%;
 
 }
 
-div.register-div input{
+div.register-div input {
     margin: 5px;
-    width:180px;
+    width: 180px;
 }
 
-div.register-div{
-    border-radius:8px;
-    width:60%;
-    margin:auto;
-    margin-top:25px;
-    padding:15px;
+div.register-div {
+    border-radius: 8px;
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+    padding: 15px;
     background-color: #87ceeb;
 }
 
-input.register-submit{
+input.register-submit {
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+p.login-message-register {
+    font-size: 18px;
+    text-align: center;
+    margin: auto auto 10px;
+}
+
+button.btn-dashboard-redirect {
+    margin: auto;
+    display: block;
+    text-align: center;
     border-radius:8px;
-    margin-top:15px !important;
+}
+
+div.register-confirm-content {
+    margin:auto;
+    background-color: #87ceeb;
+    padding:20px;
+}
+
+p.register-confirmed {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px auto;
+}
+
+img.logo-register-confirm{
+    margin:auto;
+    display:block;
+    border-radius:50%;
+    border: 2px solid black;
+}
+
+h1.dashboard-welcome{
+    color: #FFA949;
+    margin-bottom:10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.login{
+    float:right;
+}
+
+li.register{
+    float:right;
+}
+
+a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color:#87ceeb;
 }

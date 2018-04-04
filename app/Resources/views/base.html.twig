@@ -18,6 +18,11 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
     <body class="text-center">
+    <ul>
+        <li><a class="active" href="/dashboard">My Account</a></li>
+        <li class="login"><a class="login" href="/login">Log in</a></li>
+        <li class="register"><a class="register" href="/register">Sign Up</a></li>
+    </ul>
         {% block body %}{% endblock %}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

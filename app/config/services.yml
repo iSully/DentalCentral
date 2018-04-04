@@ -32,3 +32,4 @@ services:
         class: AppBundle\Form\Type\LocalDateTimeType
         tags:
             - { name: form.type, alias: local_datetime }
+

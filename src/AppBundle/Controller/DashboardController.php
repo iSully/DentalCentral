@@ -38,7 +38,7 @@ class DashboardController extends Controller
         }
 
 
-        return $this->render('@App/dashboard.html.twig', ['appointments' => $appointments]);
+        return $this->render('@App/dashboard.html.twig', ['appointments' => $appointments, 'user' => $user]);
     }
 
     public function cancelAction(Request $request, $appointmentId)
