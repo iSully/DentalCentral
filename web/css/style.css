@@ -261,7 +261,7 @@ h1.dashboard-welcome {
     margin-top: 15px;
 }
 
-ul#nav {
+ul.nav-menu {
     list-style-type: none;
     margin: 0;
     padding: 0;

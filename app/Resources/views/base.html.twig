@@ -18,28 +18,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
-    <body class="text-center">
+<body class="text-center">
 
-    <ul id="nav">
-        <li class="nav-logo"><a class="nav-logo" href="/dashboard"><img width="60" height="60" src="{{ asset('images/logo.png') }}" alt="Dental Central Logo"></a></li>
-        <li class="nav-dashboard"><a class="nav-dashboard active" href="/dashboard">My Account</a></li>
-        <li class="nav-login"><a class="nav-login" href="/login">Log in</a></li>
-        <li class="nav-register"><a class="nav-register" href="/register">Sign Up</a></li>
-    </ul>
-    <script>
-        {% if app.user == false %}
-        $(".nav-dashboard a").css("display", "none");
-        {% endif %}
-        {% if app.user %}
-        $(".nav-login a").attr("href", "/logout").text("Log Out");
-        $(".nav-register a").css("display", "none");
-        {% endif %}
-    </script>
-    <br>
-        {% block body %}{% endblock %}
+<ul class="nav-menu">
+    <li class="nav-logo"><a class="nav-logo" href="/dashboard"><img width="60" height="60"
+                                                                    src="{{ asset('images/logo.png') }}"
+                                                                    alt="Dental Central Logo"></a></li>
+    <li class="nav-dashboard"><a class="nav-dashboard active" href="/dashboard">My Account</a></li>
+    <li class="nav-login"><a class="nav-login" href="/login">Log in</a></li>
+    <li class="nav-register"><a class="nav-register" href="/register">Sign Up</a></li>
+</ul>
+<script>
+    {% if app.user == false %}
+    $("a.nav-dashboard").css("display", "none");
+    {% endif %}
+    {% if app.user %}
+    $("a.nav-login").attr("href", "/logout").text("Log Out");
+    $("a.nav-register").css("display", "none");
+    {% if app.user.role == "Admin" %}
+    $("ul.nav-menu").append('<li class="nav-appointments"><a class="nav-appointments-admin" href="/appointments">Manage All Appointments</a></li>');
+    $("ul.nav-menu").append('<li class="nav-add-user"><a class="nav-add-user" href="/users/add">Add New User</a></li>');
+    $("ul.nav-menu").append('<li class="nav-list-users"><a class="nav-list-users" href="/users/list">View/Manage Users</a></li>');
+    {% endif %}
+    {% endif %}
+</script>
+<br>
+{% block body %}{% endblock %}
 
-        {% block javascripts %}{% endblock %}
-    </body>
+{% block javascripts %}{% endblock %}
+</body>
 </html>
