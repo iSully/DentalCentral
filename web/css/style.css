@@ -132,7 +132,7 @@
 }
 
 img.logo-login {
-    margin:auto;
+    margin: auto;
     border: 3px solid black;
     border-radius: 50px;
 
@@ -232,13 +232,13 @@ button.btn-dashboard-redirect {
     margin: auto;
     display: block;
     text-align: center;
-    border-radius:8px;
+    border-radius: 8px;
 }
 
 div.register-confirm-content {
-    margin:auto;
+    margin: auto;
     background-color: #87ceeb;
-    padding:20px;
+    padding: 20px;
 }
 
 p.register-confirmed {
@@ -248,17 +248,17 @@ p.register-confirmed {
     margin: 15px auto;
 }
 
-img.logo-register-confirm{
-    margin:auto;
-    display:block;
-    border-radius:50%;
+img.logo-register-confirm {
+    margin: auto;
+    display: block;
+    border-radius: 50%;
     border: 2px solid black;
 }
 
-h1.dashboard-welcome{
+h1.dashboard-welcome {
     color: #FFA949;
-    margin-bottom:10px;
-    margin-top:15px;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 ul {
@@ -271,7 +271,7 @@ ul {
 
 li {
     float: left;
-    display:inline;
+    display: inline;
 }
 
 li a {
@@ -282,13 +282,13 @@ li a {
     text-decoration: none;
 }
 
-li.login{
-    float:right;
-    margin:auto;
+li.login {
+    float: right;
+    margin: auto;
 }
 
-li.register{
-    float:right;
+li.register {
+    float: right;
 }
 
 a:hover:not(.active) {
@@ -296,15 +296,14 @@ a:hover:not(.active) {
 }
 
 .active {
-    background-color:#87ceeb;
+    background-color: #87ceeb;
 }
 
-
-li.nav-logo{
-    float:left;
-    display:inline;
+li.nav-logo {
+    float: left;
+    display: inline;
 }
 
-li.nav-logo a.logo{
-    padding:0;
+li.nav-logo a.logo {
+    padding: 0;
 }
