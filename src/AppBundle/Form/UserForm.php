@@ -42,6 +42,7 @@ class UserForm extends AbstractType
             )
             ->add('name', TextType::class)
             ->add('email', EmailType::class)
+            ->add('phone', TextType::class)
             ->add('username', TextType::class)
             ->add(
                 'plainPassword',

@@ -47,6 +47,7 @@ class AppointmentsController extends Controller
                 $newAppointment = $appointment;
                 $appointment = $repository->findOneBy(['id' => $appointmentId]);
                 $appointment->setDentist($newAppointment->getDentist());
+                $appointment->setType($newAppointment->getType());
                 $appointment->setUser($newAppointment->getUser());
                 $appointment->setHygienist($newAppointment->getHygienist());
                 $appointment->setStart($newAppointment->getStart());

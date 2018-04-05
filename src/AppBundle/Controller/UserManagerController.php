@@ -94,8 +94,8 @@ class UserManagerController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
-
             $entityManager = $this->getDoctrine()->getManager();
+            //TODO: Add User Level Update Support
             $entityManager->persist($user);
             $entityManager->flush();
 

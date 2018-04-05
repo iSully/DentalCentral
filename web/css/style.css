@@ -307,3 +307,7 @@ li.nav-logo {
 li.nav-logo a.logo {
     padding: 0;
 }
+
+button{
+    border-radius:8px;
+}
