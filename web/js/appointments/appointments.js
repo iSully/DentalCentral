@@ -11,6 +11,8 @@ var renderPopup = function (jsEvent, start, end, calEvent) {
         $('#appointment_id').val(calEvent.id);
     }
     $eventForm.show();
+    console.log(calEvent.title);
+    console.log(calEvent.id);
 
     var leftPosition = 0;
     var $prong = $('.prong');

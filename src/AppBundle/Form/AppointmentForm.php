@@ -75,6 +75,7 @@ class AppointmentForm extends AbstractType
                         'Filling' => 'filling',
                         'Tooth Removal' => 'tooth_removal',
                         'Surgery' => 'surgery',
+                        'Tooth Implant' => 'tooth_implant',
                     ],
                 ]
             )
