@@ -90,6 +90,7 @@
                 dentist: '{{ appointment.dentist.id }}',
                 hygienist: '{{ appointment.hygienist.id }}',
                 user: '{{ appointment.user.id }}',
+                type: '{{ appointment.type }}',
                 color: '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0).toString(16)
         }
         )

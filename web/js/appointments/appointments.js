@@ -16,7 +16,6 @@ var renderPopup = function (jsEvent, start, end, calEvent) {
     }
     $eventForm.show();
 
-
     var leftPosition = 0;
     var $prong = $('.prong');
     var prongPos = 0;
