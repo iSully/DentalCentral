@@ -2,7 +2,11 @@
 
 {% block body %}
     <script>
-    window.location = "/login";
+        {% if user != null %}
+           window.location = "/dashboard";
+        {% else %}
+       window.location = "/login";
+        {% endif %}
     </script>
 {% endblock %}
 
