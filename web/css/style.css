@@ -274,7 +274,7 @@ li[class |= nav] {
     display: inline;
 }
 
-li a[class |= nav]{
+li a[class |= nav] {
     display: block;
     color: white;
     text-align: center;
@@ -308,30 +308,32 @@ li.nav-logo a.logo {
     padding: 0;
 }
 
-button{
-    border-radius:8px;
+button {
+    border-radius: 8px;
 }
 
-label[for^="user_form"]{
-    width:85px;
+label[for^="user_form"] {
+    width: 85px;
 }
-input[id^="user_form"]{
-    width:250px;
+
+input[id^="user_form"] {
+    width: 250px;
     margin: 5px auto auto;
 }
 
-button.btn-add-user{
-    margin:10px;
-}
-select#user_form_staffRole{
-    width:250px;
+button.btn-add-user {
+    margin: 10px;
 }
 
-table.user-table{
-    margin:auto;
-    width:875px;
+select#user_form_staffRole {
+    width: 250px;
 }
 
-h2#current-users{
-    margin:5px auto 20px auto;
+table.user-table {
+    margin: auto;
+    width: 875px;
+}
+
+h2#current-users {
+    margin: 5px auto 20px auto;
 }

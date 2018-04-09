@@ -4,16 +4,16 @@
 {% block body %}
     <div class="login">
         <h2>Add A New User</h2>
-    {{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.phone) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
-    {{ form_row(form.staffRole) }}
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.phone) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+        {{ form_row(form.staffRole) }}
 
-    <button type="submit" class="btn-add-user">Add user</button>
-    {{ form_end(form) }}
+        <button type="submit" class="btn-add-user">Add user</button>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
