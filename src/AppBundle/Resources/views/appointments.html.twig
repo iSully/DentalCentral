@@ -87,9 +87,10 @@
                 title: '{{ appointment.type }} - Client: {{ appointment.user.name }} - D: {{ appointment.dentist.username }} - H: {{ appointment.hygienist.username }}',
                 start: '{{ appointment.start|date('Y-m-dTH:i') }}',
                 end: '{{ appointment.end|date('Y-m-dTH:i') }}',
-                dentist: '{{ appointment.dentist.id}}',
-                hygienist: '{{ appointment.hygienist.name }}',
-                user: '{{ appointment.user.name }}',
+                dentist: '{{ appointment.dentist.id }}',
+                hygienist: '{{ appointment.hygienist.id }}',
+                user: '{{ appointment.user.id }}',
+                type: '{{ appointment.type }}',
                 color: '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0).toString(16)
         }
         )
