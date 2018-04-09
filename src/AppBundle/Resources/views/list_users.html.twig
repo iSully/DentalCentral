@@ -1,14 +1,15 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
-    <table>
+<div class="login">
+    <h2 id="current-users">All Current Users</h2>
+    <table class="user-table">
         <tbody>
         <tr>
-            <td>Username</td>
-            <td>Email</td>
-            <td>User Type</td>
-            <td colspan="2">Options</td>
+            <td><b>Username</b></td>
+            <td><b>Email</b></td>
+            <td><b>User Type</b></td>
+            <td colspan="2"><b>Options</b></td>
         </tr>
         <tr>
             <td colspan="5"> <hr /></td>
@@ -35,5 +36,6 @@
         {% endfor %}
         </tbody>
     </table>
+    <div>
 
 {% endblock %}

@@ -311,3 +311,27 @@ li.nav-logo a.logo {
 button{
     border-radius:8px;
 }
+
+label[for^="user_form"]{
+    width:85px;
+}
+input[id^="user_form"]{
+    width:250px;
+    margin: 5px auto auto;
+}
+
+button.btn-add-user{
+    margin:10px;
+}
+select#user_form_staffRole{
+    width:250px;
+}
+
+table.user-table{
+    margin:auto;
+    width:875px;
+}
+
+h2#current-users{
+    margin:5px auto 20px auto;
+}

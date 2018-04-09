@@ -9,10 +9,13 @@ var renderPopup = function (jsEvent, start, end, calEvent) {
     $('#appointment_form_end').val(end.format('YYYY-MM-DD[T]HH:mm'));
     if (calEvent) {
         $('#appointment_id').val(calEvent.id);
+        $('#appointment_form_user').val(calEvent.user);
+        $('#appointment_form_dentist').val(calEvent.dentist);
+        $('#appointment_form_hygienist').val(calEvent.hygienist);
+        $('#appointment_form_type').val(calEvent.type);
     }
     $eventForm.show();
-    console.log(calEvent.title);
-    console.log(calEvent.id);
+
 
     var leftPosition = 0;
     var $prong = $('.prong');
@@ -91,6 +94,7 @@ $(document).ready(function () {
         timeFormat: 'h:mm A()',
         minTime: '08:00:00',
         maxTime: '18:00:00',
+        weekends: false,
         selectable: true,
         events: function (start, end, timezone, callback) {
             callback(events);
