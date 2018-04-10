@@ -9,7 +9,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\EditProfileForm;
-use AppBundle\Form\UserEditForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,23 +18,21 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * Class EditProfileController
  * @package AppBundle\Controller
  *
- * @Route("/edit-profile")
+ * @Route("/profile")
  */
 class EditProfileController extends Controller
 {
 
     /**
-     * @Route("/")
+     * @Route("/edit")
      *
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id)
+    public function editAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository("AppBundle:User")->findOneBy(['id' => $id]);
+        $user = $this->getUser();
         $form = $this->createForm(EditProfileForm::class, $user);
         $form->handleRequest($request);
 
