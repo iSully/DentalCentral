@@ -123,6 +123,7 @@ class AppointmentsController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $entityManager->getRepository("AppBundle:Appointment");
         $appointment = $repository->find($appointmentId);
+        $appointment->setCancelled(true);
         $entityManager->remove($appointment);
         $entityManager->flush();
 

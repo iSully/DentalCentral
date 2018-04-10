@@ -81,8 +81,9 @@ class UserManagerController extends Controller
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      *
-     * @Route("/edit/{id}", name="edit_user")
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/edit/{id}", name="edit_user")
      */
     public function editAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id)
     {

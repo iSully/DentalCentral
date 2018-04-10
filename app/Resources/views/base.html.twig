@@ -35,6 +35,7 @@
     $("a.nav-dashboard").css("display", "none");
     {% endif %}
     {% if app.user %}
+    $("ul.nav-menu").append('<li class="nav-edit-account"><a class="nav-edit-account" href="/edit-profile">Edit Your Account Information</a></li>');
     $("a.nav-login").attr("href", "/logout").text("Log Out");
     $("a.nav-register").css("display", "none");
     {% if app.user.role == "Admin" %}
