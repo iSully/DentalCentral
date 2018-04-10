@@ -5,13 +5,15 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="dashboard-welcome">Edit Your Profile Information!</h1>
+    <div class="login">
+<h1>Edit Your Profile Information</h1>
     {{ form_start(form) }}
     {{ form_row(form.name) }}
     {{ form_row(form.email) }}
     {{ form_row(form.phone) }}
     {{ form_row(form.plainPassword.first) }}
     {{ form_row(form.plainPassword.second) }}
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Update Profile!</button>
+    <button class="btn btn-lg btn-primary btn-block edit-profile" type="submit">Update Profile!</button>
     {{ form_end(form) }}
+    </div>
 {% endblock %}
