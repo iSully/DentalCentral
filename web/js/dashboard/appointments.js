@@ -90,7 +90,7 @@ $(document).ready(function () {
         minTime: '08:00:00',
         maxTime: '18:00:00',
         selectable: true,
-        weekends:false,
+        weekends: false,
         events: function (start, end, timezone, callback) {
             callback(events);
         },

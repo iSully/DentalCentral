@@ -25,7 +25,8 @@ class UserEditForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('staffRole',
+            ->add(
+                'staffRole',
                 ChoiceType::class,
                 [
                     'choices' => [
@@ -37,7 +38,8 @@ class UserEditForm extends AbstractType
                     'label' => 'User Role',
                     'required' => true,
                     'multiple' => false,
-                ])
+                ]
+            )
             ->add('email', EmailType::class)
             ->add('name', TextType::class)
             ->add('phone', TextType::class)

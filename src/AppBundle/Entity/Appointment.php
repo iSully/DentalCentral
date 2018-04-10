@@ -57,6 +57,12 @@ class Appointment
     private $hygienist;
 
     /**
+     * @var boolean
+     */
+    private $cancelled;
+
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="end", type="datetime")
@@ -229,6 +235,22 @@ class Appointment
         $this->type = $type;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCancelled()
+    {
+        return $this->cancelled;
+    }
+
+    /**
+     * @param bool $cancelled
+     */
+    public function setCancelled($cancelled)
+    {
+        $this->cancelled = $cancelled;
     }
 
     /**

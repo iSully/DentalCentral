@@ -50,23 +50,6 @@ class User extends BaseUser
     private $phone;
 
     /**
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-    }
-
-
-    /**
      * @var Appointment[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Appointment", mappedBy="user")
@@ -93,6 +76,22 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
     }
 
     /**
@@ -175,6 +174,11 @@ class User extends BaseUser
         $this->appointments = $appointments;
     }
 
+    public function isDentist()
+    {
+        return $this->getRole() === 'Dentist';
+    }
+
     /**
      * @return string
      */
@@ -186,11 +190,6 @@ class User extends BaseUser
         }
 
         return 'Unknown';
-    }
-
-    public function isDentist()
-    {
-        return $this->getRole() === 'Dentist';
     }
 
     public function isHygienist()

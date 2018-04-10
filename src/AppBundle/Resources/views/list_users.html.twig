@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<div class="login">
+    <div class="login">
     <h2 id="current-users">All Current Users</h2>
     <table class="user-table">
         <tbody>
@@ -12,7 +12,9 @@
             <td colspan="2"><b>Options</b></td>
         </tr>
         <tr>
-            <td colspan="5"> <hr /></td>
+            <td colspan="5">
+                <hr/>
+            </td>
         </tr>
         {% for user in users %}
             <tr>
