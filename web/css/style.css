@@ -333,9 +333,11 @@ table.user-table {
     margin: auto;
     width: 875px;
 }
-label[for^="edit_profile"]{
-    width:85px;
+
+label[for^="edit_profile"] {
+    width: 85px;
 }
+
 input[id^="edit_profile"] {
     width: 250px;
     margin: 5px auto auto;
@@ -345,11 +347,11 @@ h2#current-users {
     margin: 5px auto 20px auto;
 }
 
-button.edit-profile{
-    margin:auto;
-    margin-top:10px;
+button.edit-profile {
+    margin: auto;
+    margin-top: 10px;
 }
 
-li.nav-edit-account{
-    float:right;
+li.nav-edit-account {
+    float: right;
 }

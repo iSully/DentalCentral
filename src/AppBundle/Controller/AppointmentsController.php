@@ -33,6 +33,7 @@ class AppointmentsController extends Controller
         $appointment = new Appointment();
         $form = $this->createForm(AppointmentForm::class, $appointment);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $appointmentId = null;
 

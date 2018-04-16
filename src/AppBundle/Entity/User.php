@@ -124,11 +124,12 @@ class User extends BaseUser
     public function getHygienistAppointments()
     {
         $appointments = [];
-        foreach($this->hygienistAppointments as $appointment){
-            if($appointment->isActive()){
+        foreach ($this->hygienistAppointments as $appointment) {
+            if ($appointment->isActive()) {
                 $appointment[] = $appointment;
             }
         }
+
         return $appointments;
     }
 

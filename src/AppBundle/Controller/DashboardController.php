@@ -35,6 +35,7 @@ class DashboardController extends Controller
                 $appointments = $this->get('user_service')->getUser()->getAppointments();
             }
         }
+
         //TODO: Add Upcoming Appointments Notification [Within 7 Days of Today]
         return $this->render(
             '@App/dashboard.html.twig',
