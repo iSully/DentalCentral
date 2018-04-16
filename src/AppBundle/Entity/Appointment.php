@@ -56,11 +56,6 @@ class Appointment
      */
     private $hygienist;
 
-    /**
-     * @var boolean
-     */
-    private $cancelled;
-
 
     /**
      * @var \DateTime
@@ -98,6 +93,31 @@ class Appointment
      * @ORM\JoinColumn(name="modification_id", referencedColumnName="id")
      */
     private $modificationRequest;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="integer")
+     *
+     * Determines if appointment is active or not
+     */
+    private $active;
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
 
     /**
      * Get id
@@ -235,22 +255,6 @@ class Appointment
         $this->type = $type;
 
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCancelled()
-    {
-        return $this->cancelled;
-    }
-
-    /**
-     * @param bool $cancelled
-     */
-    public function setCancelled($cancelled)
-    {
-        $this->cancelled = $cancelled;
     }
 
     /**

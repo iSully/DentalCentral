@@ -99,8 +99,16 @@ class User extends BaseUser
      */
     public function getDentistAppointments()
     {
-        return $this->dentistAppointments;
+        $appointments = [];
+        foreach ($this->dentistAppointments as $appointment) {
+            if ($appointment->isActive()) {
+                $appointments[] = $appointment;
+            }
+        }
+
+        return $appointments;
     }
+
 
     /**
      * @param Appointment[] $dentistAppointments
@@ -115,7 +123,13 @@ class User extends BaseUser
      */
     public function getHygienistAppointments()
     {
-        return $this->hygienistAppointments;
+        $appointments = [];
+        foreach($this->hygienistAppointments as $appointment){
+            if($appointment->isActive()){
+                $appointment[] = $appointment;
+            }
+        }
+        return $appointments;
     }
 
     /**

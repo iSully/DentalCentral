@@ -80,6 +80,8 @@
         var events = [];
 
         {% for appointment in appointments %}
+        //Only Display Active Appointments
+        {% if appointment.active %}
         events.push(
             {
                 id: '{{ appointment.id }}',
@@ -95,6 +97,7 @@
         }
         )
         ;
+        {% endif %}
         {% endfor %}
     </script>
     <script src="{{ asset('js/appointments/appointments.js') }}"></script>

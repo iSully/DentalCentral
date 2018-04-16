@@ -85,6 +85,7 @@ class AppointmentsController extends Controller
             }
 
             if ($error === null) {
+                $appointment->setActive(true);
                 $entityManager->persist($appointment);
                 $entityManager->flush();
             }
@@ -123,15 +124,23 @@ class AppointmentsController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $entityManager->getRepository("AppBundle:Appointment");
         $appointment = $repository->find($appointmentId);
-        $appointment->setCancelled(true);
-        $entityManager->remove($appointment);
+        $appointment->setActive(false);
+//        $entityManager->remove($appointment);
         $entityManager->flush();
 
         return $this->redirectToRoute('appointments');
     }
 
+    //Checks if appointments are overlapping when adding a new appointment
+    //Returns true if appointments are NOT overlapping, False if they overlap
     public function checkOverlap(Appointment $new, Appointment $existing)
     {
-        return ($new->getStart() < $existing->getEnd() && $existing->getStart() < $new->getEnd());
+        if ($existing->isActive() == 0) {
+            return false;
+        } else {
+            return ($new->getStart() < $existing->getEnd() && $existing->getStart() < $new->getEnd());
+        }
+
+
     }
 }

@@ -6,31 +6,42 @@
 
 {% block body %}
     <h1 class="dashboard-welcome">Welcome back, {{ user.name }}</h1>
-
+    <script>
+        //TODO: Alert upcoming appointments (within 1 week)
+    </script>
+    <div class="alert alert-info" role="alert"></div>
     <div id="calendar"></div>
 
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        var events = [];
-
-        {% for appointment in appointments %}
-        events.push(
-            {
-                id: '{{ appointment.id }}',
-                //TODO: Find way to display  - D: {{ appointment.dentist }} - H: {{ appointment.hygienist }} - C: {{ appointment.user.name }} cleanly in title
-                title: '{{ appointment.type }} - {{ appointment.user.name }}',
-                start: '{{ appointment.start|date('Y-m-dTH:i') }}',
-                end: '{{ appointment.end|date('Y-m-dTH:i') }}',
-                dentist: '{{ appointment.dentist.name }}',
-                hygienist: '{{ appointment.hygienist.name }}',
-                user: '{{ appointment.user.name }}',
-                color: '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0).toString(16)
-        }
-        )
-        ;
-        {% endfor %}
-    </script>
-    <script src="{{ asset('js/dashboard/appointments.js') }}"></script>
-{% endblock %}
+    {% block javascripts %}
+        <script>
+            var events = [];
+            {% for appointment in appointments %}
+            {% if not appointment.active %}
+            var color = '#FF0000';
+            var title = 'CANCELLED';
+            $("div.alert-info").html('<p>You have one or more appointments that have been cancelled. Click on the appointment to remove it from your calendar</p>');
+            {% else %}
+            var title = '{{ appointment.type }} - {{ appointment.user.name }}';
+            var color = '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0
+            ).toString(16);
+            {% endif %}
+            events.push(
+                {
+                    id: '{{ appointment.id }}',
+                    //TODO: Find way to display  - D: {{ appointment.dentist }} - H: {{ appointment.hygienist }} - C: {{ appointment.user.name }} cleanly in title
+                    title: title,
+                    start: '{{ appointment.start|date('Y-m-dTH:i') }}',
+                    end: '{{ appointment.end|date('Y-m-dTH:i') }}',
+                    dentist: '{{ appointment.dentist.name }}',
+                    hygienist: '{{ appointment.hygienist.name }}',
+                    user: '{{ appointment.user.name }}',
+                    color: color
+                }
+            )
+            ;
+            {% endfor %}
+        </script>
+        <script src="{{ asset('js/dashboard/appointments.js') }}"></script>
+    {% endblock %}

@@ -349,3 +349,7 @@ button.edit-profile{
     margin:auto;
     margin-top:10px;
 }
+
+li.nav-edit-account{
+    float:right;
+}
