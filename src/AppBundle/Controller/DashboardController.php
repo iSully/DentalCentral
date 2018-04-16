@@ -53,9 +53,5 @@ class DashboardController extends Controller
         $appointment = $this->getDoctrine()->getRepository('AppBundle:Appointment')->find($appointmentId);
     }
 
-    public function upcomingAppointmentsAction(Request $request)
-    {
-
-    }
 
 }
