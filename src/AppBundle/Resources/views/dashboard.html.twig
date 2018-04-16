@@ -27,9 +27,9 @@
             var color = '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0
             ).toString(16);
             {% endif %}
-            if(inactiveCount > 0){
-                $('<div class=\"alert alert-info\" role=\"alert\"></div>').insertAfter('h1');
-                $("div.alert-info").html('<p>You have one or more appointments that have been cancelled. Click on the appointment to remove it from your calendar</p>');
+            if (inactiveCount > 0) {
+                $('<div class=\"alert alert-danger\" role=\"alert\"></div>').insertAfter('h1');
+                $("div.alert-danger").html('<p>You have one or more appointments that have been cancelled. Please contact your Dentist\'s office to reschedule an appointment!</p>');
             }
             events.push(
                 {
