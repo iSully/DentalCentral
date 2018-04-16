@@ -8,9 +8,7 @@
     <h1 class="dashboard-welcome">Welcome back, {{ user.name }}</h1>
     <script>
         //TODO: Alert upcoming appointments (within 1 week)
-
     </script>
-    <div class="alert alert-info" role="alert"></div>
     <div id="calendar"></div>
 
 {% endblock %}
@@ -18,16 +16,21 @@
     {% block javascripts %}
         <script>
             var events = [];
+            var inactiveCount = 0;
             {% for appointment in appointments %}
             {% if not appointment.active %}
             var color = '#FF0000';
             var title = 'CANCELLED';
-            $("div.alert-info").html('<p>You have one or more appointments that have been cancelled. Click on the appointment to remove it from your calendar</p>');
+            inactiveCount++;
             {% else %}
             var title = '{{ appointment.type }} - {{ appointment.user.name }}';
             var color = '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0
             ).toString(16);
             {% endif %}
+            if(inactiveCount > 0){
+                $('<div class=\"alert alert-info\" role=\"alert\"></div>').insertAfter('h1');
+                $("div.alert-info").html('<p>You have one or more appointments that have been cancelled. Click on the appointment to remove it from your calendar</p>');
+            }
             events.push(
                 {
                     id: '{{ appointment.id }}',
