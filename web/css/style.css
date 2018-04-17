@@ -355,3 +355,7 @@ button.edit-profile {
 li.nav-edit-account {
     float: right;
 }
+
+button[id="clearCancelled"]{
+    margin-bottom:15px !important;
+}

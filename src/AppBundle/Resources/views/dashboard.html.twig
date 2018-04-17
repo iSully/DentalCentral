@@ -27,10 +27,6 @@
             var color = '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0
             ).toString(16);
             {% endif %}
-            if (inactiveCount > 0) {
-                $('<div class=\"alert alert-danger\" role=\"alert\"></div>').insertAfter('h1');
-                $("div.alert-danger").html('<p>You have one or more appointments that have been cancelled. Please contact your Dentist\'s office to reschedule an appointment!</p>');
-            }
             events.push(
                 {
                     id: '{{ appointment.id }}',
@@ -46,6 +42,11 @@
             )
             ;
             {% endfor %}
+            if (inactiveCount > 0) {
+                $('<div class=\"alert alert-danger\" role=\"alert\"></div>').insertAfter('h1');
+                $("div.alert-danger").html('<p>You have one or more appointments that have been cancelled. Please contact your Dentist\'s office to reschedule an appointment!</p>');
+                $('<a href=\"{{ path('clearCancelled') }}\"><button class=\"btn btn-primary\" id=\"clearCancelled\">Clear All Cancelled Appointments</button></a>').insertAfter('div.alert-danger');
+            }
         </script>
         <script src="{{ asset('js/dashboard/appointments.js') }}"></script>
     {% endblock %}

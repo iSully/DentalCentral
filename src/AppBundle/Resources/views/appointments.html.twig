@@ -10,7 +10,24 @@
             {{ error }}
         </div>
     {% endif %}
+    <div id="fullCalModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>  <span class="sr-only">close</span>
 
+                    </button>
+                    <h4 id="modalTitle" class="modal-title"></h4>
+
+                </div>
+                <div id="modalBody" class="modal-body">Are you sure remove the event?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="revButton" data-dismiss="modal">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="calendar"></div>
 
     <div id="calendar-popup">

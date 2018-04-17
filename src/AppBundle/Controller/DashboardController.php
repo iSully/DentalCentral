@@ -21,7 +21,7 @@ class DashboardController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/")
+     * @Route("/", name="dashboard")
      */
     public function indexAction(Request $request)
     {
@@ -53,5 +53,26 @@ class DashboardController extends Controller
         $appointment = $this->getDoctrine()->getRepository('AppBundle:Appointment')->find($appointmentId);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @Route("/clear", name="clearCancelled")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function removeCancelledAction(Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $this->get('user_service')->getUser();
+        $repository = $this->getDoctrine()->getRepository("AppBundle:Appointment");
+        $userAppointments = $repository->findBy(['user' => $user]);
+        foreach ($userAppointments as $a) {
+            if (!$a->isActive()) {
+                $entityManager->remove($a);
+            }
+        }
+        $entityManager->flush();
+
+        return $this->redirectToRoute("dashboard");
+    }
 
 }
