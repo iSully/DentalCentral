@@ -23,7 +23,7 @@
             var title = 'CANCELLED';
             inactiveCount++;
             {% else %}
-            var title = '{{ appointment.type }} - {{ appointment.user.name }}';
+            var title = '{{ appointment.type }} - {{ appointment.user.name }} \n  D: {{ appointment.dentist.name }}';
             var color = '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0
             ).toString(16);
             {% endif %}

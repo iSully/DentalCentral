@@ -359,3 +359,17 @@ li.nav-edit-account {
 button[id="clearCancelled"]{
     margin-bottom:15px !important;
 }
+
+button#cal-view{
+    display: none;
+}
+
+table#cal-list{
+    margin:auto;
+    width:80%;
+}
+
+td{
+    margin-left: 10px;
+    margin-right:10px;
+}

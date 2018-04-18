@@ -131,9 +131,13 @@ class AppointmentsController extends Controller
 
         return $this->redirectToRoute('appointments');
     }
-
-    //Checks if appointments are overlapping when adding a new appointment
-    //Returns true if appointments are NOT overlapping, False if they overlap
+    
+    /**
+     * Checks if appointments are overlapping when adding a new appointment
+     * @param Appointment $new
+     * @param Appointment $existing
+     * @return bool
+     */
     public function checkOverlap(Appointment $new, Appointment $existing)
     {
         if ($existing->isActive() == 0) {

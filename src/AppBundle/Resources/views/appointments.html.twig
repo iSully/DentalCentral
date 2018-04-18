@@ -5,11 +5,32 @@
 {% endblock %}
 
 {% block body %}
+
+
     {% if error != null %}
         <div class="alert alert-danger" role="alert">
             {{ error }}
         </div>
     {% endif %}
+    <button class="btn btn-primary" id="cal-list-view-btn" onclick="listView()">Click Here For List-View of
+        Appointments
+    </button>
+    <button class="btn btn-primary" id="cal-view" onclick="calView()">Click Here For A Calendar View Of Appointments
+    </button>
+    <div id="calendar-list-view">
+        <table id="cal-list">
+            <tbody>
+            <tr>
+                <td colspan="5"><b>Appointment Type</b></td>
+                <td colspan="3"><b>Client</b></td>
+                <td colspan="3"><b>Dentist</b></td>
+                <td colspan="3"><b>Hygienist</b></td>
+                <td colspan="2"><b>Appointment Start</b></td>
+                <td colspan="2"><b>Appointment End</b></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <div id="calendar"></div>
 
     <div id="calendar-popup">
@@ -76,8 +97,40 @@
 
 {% block javascripts %}
     <script>
-        var events = [];
+        calView();
+        var listPopulated = false;
 
+        function listView() {
+            document.getElementById('calendar').style.visibility = "hidden";
+            document.getElementById('cal-view').style.display = "inline-block";
+            document.getElementById('cal-list-view-btn').style.display = "none";
+            document.getElementById('calendar-list-view').style.display = "block";
+            populateList();
+        }
+
+        function populateList() {
+            if (!listPopulated) {
+                {% for appointment in appointments %}
+                {% if appointment.active %}
+
+                $('table#cal-list').append('<tr class="cal-list-event"><td colspan="5">{{ appointment.type }}</td><td colspan="3">{{ appointment.user.name }}</td> <td colspan="3">{{ appointment.dentist.name }}</td> <td colspan="3">{{ appointment.hygienist.name }}</td><td colspan="2">{{ appointment.start|localizeddate('long', 'short') }}</td> <td colspan="2">{{ appointment.end|localizeddate('long', 'short') }}</td> </tr>');
+                {% endif %}
+                {% endfor %}
+                listPopulated = true;
+            } else {
+                console.log("Already Populated");
+            }
+        }
+
+        function calView() {
+            document.getElementById('calendar').style.visibility = "visible";
+            document.getElementById('cal-list-view-btn').style.display = "inline-block";
+            document.getElementById('cal-view').style.display = "none";
+            document.getElementById('calendar-list-view').style.display = "none";
+
+        }
+
+        var events = [];
         {% for appointment in appointments %}
         //Only Display Active Appointments
         {% if appointment.active %}
@@ -85,7 +138,7 @@
             {
                 id: '{{ appointment.id }}',
                 //TODO: Find way to display  - D: {{ appointment.dentist }} - H: {{ appointment.hygienist }} - C: {{ appointment.user.name }} cleanly in title
-                title: '{{ appointment.type }} - Client: {{ appointment.user.name }} - D: {{ appointment.dentist.username }} - H: {{ appointment.hygienist.username }}',
+                title: '{{ appointment.type }} \n Client: {{ appointment.user.name }} \n D: {{ appointment.dentist.username }} \n H: {{ appointment.hygienist.username }}',
                 start: '{{ appointment.start|date('Y-m-dTH:i') }}',
                 end: '{{ appointment.end|date('Y-m-dTH:i') }}',
                 dentist: '{{ appointment.dentist.id }}',
@@ -98,6 +151,10 @@
         ;
         {% endif %}
         {% endfor %}
+
+
     </script>
     <script src="{{ asset('js/appointments/appointments.js') }}"></script>
+
+
 {% endblock %}

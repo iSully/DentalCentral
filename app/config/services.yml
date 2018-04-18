@@ -33,3 +33,7 @@ services:
         tags:
             - { name: form.type, alias: local_datetime }
 
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

@@ -71,11 +71,11 @@ class AppointmentForm extends AbstractType
                 ChoiceType::class,
                 [
                     'choices' => [
-                        'Cleaning' => 'cleaning',
-                        'Filling' => 'filling',
-                        'Tooth Removal' => 'tooth_removal',
-                        'Surgery' => 'surgery',
-                        'Tooth Implant' => 'tooth_implant',
+                        'Cleaning' => 'Cleaning',
+                        'Filling' => 'Filling',
+                        'Tooth Removal' => 'Tooth Removal',
+                        'Surgery' => 'Surgery',
+                        'Tooth Implant' => 'Tooth Implant',
                     ],
                 ]
             )
