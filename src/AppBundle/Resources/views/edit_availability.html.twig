@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    All appointments
+{% endblock %}
+
+{% block body %}
+    <div class="login">
+        <h2>Please Select Your Work Availability</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form.availability[0]) }}
+        {{ form_label(form.availability[0]) }}
+        <br>
+        {{ form_widget(form.availability[1]) }}
+        {{ form_label(form.availability[1]) }}
+        <br>
+        {{ form_widget(form.availability[2]) }}
+        {{ form_label(form.availability[2]) }}
+        <br>
+        {{ form_widget(form.availability[3]) }}
+        {{ form_label(form.availability[3]) }}
+        <br>
+        {{ form_widget(form.availability[4]) }}
+        {{ form_label(form.availability[4]) }}
+        <br>
+        <input class="btn btn-success" type="submit"/>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock body %}

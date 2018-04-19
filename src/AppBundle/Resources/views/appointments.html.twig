@@ -17,16 +17,39 @@
     </button>
     <button class="btn btn-primary" id="cal-view" onclick="calView()">Click Here For A Calendar View Of Appointments
     </button>
+    <div id="staff-availability-view">
+        <h3>Staff Availability</h3>
+        <table id="availability-table">
+            <tbody>
+            <tr>
+                <td colspan="2"><b>Staff Member</b></td>
+                <td><b>Monday</b></td>
+                <td><b>Tuesday</b></td>
+                <td><b>Wednesday</b></td>
+                <td><b>Thursday</b></td>
+                <td><b>Friday</b></td>
+            </tr>
+            {% for staffMember in staff %}
+                <tr>
+                    <td colspan="2">{{ staffMember.name }}</td>
+                    {% for i in 0..4 %}
+                        <td>{% if staffMember.availability[i] is defined %}{{ staffMember.availability[i] }}{% else %} NULL {% endif %}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <div id="calendar-list-view">
         <table id="cal-list">
             <tbody>
             <tr>
-                <td colspan="5"><b>Appointment Type</b></td>
-                <td colspan="3"><b>Client</b></td>
-                <td colspan="3"><b>Dentist</b></td>
-                <td colspan="3"><b>Hygienist</b></td>
-                <td colspan="2"><b>Appointment Start</b></td>
-                <td colspan="2"><b>Appointment End</b></td>
+                <td colspan="1"><b>Appointment Type</b></td>
+                <td colspan="1"><b>Client</b></td>
+                <td colspan="1"><b>Dentist</b></td>
+                <td colspan="1"><b>Hygienist</b></td>
+                <td colspan="1"><b>Appointment Start</b></td>
+                <td colspan="1"><b>Appointment End</b></td>
             </tr>
             </tbody>
         </table>
@@ -113,7 +136,7 @@
                 {% for appointment in appointments %}
                 {% if appointment.active %}
 
-                $('table#cal-list').append('<tr class="cal-list-event"><td colspan="5">{{ appointment.type }}</td><td colspan="3">{{ appointment.user.name }}</td> <td colspan="3">{{ appointment.dentist.name }}</td> <td colspan="3">{{ appointment.hygienist.name }}</td><td colspan="2">{{ appointment.start|localizeddate('long', 'short') }}</td> <td colspan="2">{{ appointment.end|localizeddate('long', 'short') }}</td> </tr>');
+                $('table#cal-list').append('<tr class="cal-list-event"><td colspan="1">{{ appointment.type }}</td><td colspan="1">{{ appointment.user.name }}</td> <td colspan="1">{{ appointment.dentist.name }}</td> <td colspan="1">{{ appointment.hygienist.name }}</td><td colspan="1">{{ appointment.start|localizeddate('long', 'short') }}</td> <td colspan="1">{{ appointment.end|localizeddate('long', 'short') }}</td> </tr>');
                 {% endif %}
                 {% endfor %}
                 listPopulated = true;

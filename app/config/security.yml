@@ -38,3 +38,4 @@ security:
         - { path: ^/users/, role: ROLE_ADMIN}
         - { path: ^/appointments/, role: ROLE_ADMIN}
         - { path: ^/dashboard/, role: ROLE_USER}
+        - { path: ^/availability/, roles: [ROLE_DENTIST, ROLE_HYGIENIST] }

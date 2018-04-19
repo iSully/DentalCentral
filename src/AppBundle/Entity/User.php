@@ -71,6 +71,13 @@ class User extends BaseUser
     private $hygienistAppointments;
 
     /**
+     * @var int[]
+     *
+     * @ORM\Column(name="availability", type="array", nullable=true)
+     */
+    private $availability;
+
+    /**
      * User constructor.
      */
     public function __construct()
@@ -210,5 +217,26 @@ class User extends BaseUser
     public function isHygienist()
     {
         return $this->getRole() === 'Hygienist';
+    }
+
+    /**
+     * @return int[] $availability
+     */
+    public function getAvailability()
+    {
+        if($this->availability != null){
+            asort($this->availability);
+        }
+
+        return $this->availability;
+    }
+
+    /**
+     * @param int[] $availability
+     */
+    public function setAvailability($availability)
+    {
+        asort($availability);
+        $this->availability = $availability;
     }
 }

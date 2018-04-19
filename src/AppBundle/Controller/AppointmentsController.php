@@ -28,6 +28,7 @@ class AppointmentsController extends Controller
      */
     public function addAction(Request $request)
     {
+
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $entityManager->getRepository("AppBundle:Appointment");
         $appointment = new Appointment();
@@ -107,9 +108,33 @@ class AppointmentsController extends Controller
             $returnedError = $sessionError[0];
         }
 
+        //Populate a list of staff members for the availability-view feature on Appointments Page
+        $userRepository = $this->getDoctrine()->getRepository('AppBundle:User');
+        $users = $userRepository->findAll();
+        $staff = [];
+        $week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        foreach ($users as $user) {
+            if ($user->isDentist() || $user->isHygienist()) {
+                $staff[] = $user;
+            }
+        }
+        //TODO: Create Associative Array to Store Available Days and Build Table w/Glyphicons for Availability
+        $availabilities = [];
+        foreach($staff as $s){
+            foreach($s->availability as $availableDay){
+
+            }
+        }
+
         return $this->render(
             '@App/appointments.html.twig',
-            ['form' => $form->createView(), 'appointments' => $appointments, 'error' => $returnedError]
+            [
+                'form' => $form->createView(),
+                'appointments' => $appointments,
+                'error' => $returnedError,
+                'staff' => $staff,
+                'week' => $week,
+            ]
         );
     }
 
@@ -131,7 +156,7 @@ class AppointmentsController extends Controller
 
         return $this->redirectToRoute('appointments');
     }
-    
+
     /**
      * Checks if appointments are overlapping when adding a new appointment
      * @param Appointment $new

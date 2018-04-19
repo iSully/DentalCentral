@@ -43,6 +43,9 @@
     $("ul.nav-menu").append('<li class="nav-add-user"><a class="nav-add-user" href="/users/add">Add New User</a></li>');
     $("ul.nav-menu").append('<li class="nav-list-users"><a class="nav-list-users" href="/users/list">View/Manage Users</a></li>');
     {% endif %}
+    {% if app.user.role == "Dentist" or app.user.role == "Hygienist" %}
+    $("ul.nav-menu").append('<li class="nav-edit-availability"><a class="nav-edit-availability" href="/availability/edit">Edit Availability</a></li>');
+    {% endif %}
     {% endif %}
 </script>
 <br>

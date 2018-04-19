@@ -356,20 +356,47 @@ li.nav-edit-account {
     float: right;
 }
 
-button[id="clearCancelled"]{
-    margin-bottom:15px !important;
+button[id="clearCancelled"] {
+    margin-bottom: 15px !important;
 }
 
-button#cal-view{
+button#cal-view {
     display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-table#cal-list{
-    margin:auto;
-    width:80%;
+table#cal-list {
+    margin: auto;
+    width: 80%;
 }
 
-td{
+td {
     margin-left: 10px;
-    margin-right:10px;
+    margin-right: 10px;
+}
+
+li.nav-edit-availability {
+    float: right;
+}
+
+input[id^="edit_availability_form"] {
+    display: inline-block;
+    margin: auto;
+    width: 20px;
+}
+
+label[for^="edit_availability_form"] {
+    margin-left: 5px;
+    text-align: left;
+    width: 100px;
+}
+
+button#cal-list-view-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li#availability{
+    text-align:left;
 }
