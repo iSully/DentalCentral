@@ -118,13 +118,6 @@ class AppointmentsController extends Controller
                 $staff[] = $user;
             }
         }
-        //TODO: Create Associative Array to Store Available Days and Build Table w/Glyphicons for Availability
-        $availabilities = [];
-        foreach($staff as $s){
-//            foreach($s->availability as $availableDay){
-//
-//            }
-        }
 
         return $this->render(
             '@App/appointments.html.twig',

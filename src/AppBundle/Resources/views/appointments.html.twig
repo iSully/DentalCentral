@@ -17,29 +17,47 @@
     </button>
     <button class="btn btn-primary" id="cal-view" onclick="calView()">Click Here For A Calendar View Of Appointments
     </button>
-    <div id="staff-availability-view">
-        <h3>Staff Availability</h3>
-        <table id="availability-table">
-            <tbody>
-            <tr>
-                <td colspan="2"><b>Staff Member</b></td>
-                <td><b>Monday</b></td>
-                <td><b>Tuesday</b></td>
-                <td><b>Wednesday</b></td>
-                <td><b>Thursday</b></td>
-                <td><b>Friday</b></td>
-            </tr>
-            {% for staffMember in staff %}
-                <tr>
-                    <td colspan="2">{{ staffMember.name }}</td>
-                    {% for i in 0..4 %}
-                        <td>{% if staffMember.availability[i] is defined %}{{ staffMember.availability[i] }}{% else %} NULL {% endif %}</td>
+    <hr/>
+    <div class="row">
+        <div class="col-2">
+        </div>
+
+        <div class="col-8">
+            <div id="staff-availability-view">
+                <h3>Staff Availability</h3>
+                <table id="availability-table" class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <td colspan="2"><b>Staff Member</b></td>
+                        <td><b>Monday</b></td>
+                        <td><b>Tuesday</b></td>
+                        <td><b>Wednesday</b></td>
+                        <td><b>Thursday</b></td>
+                        <td><b>Friday</b></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for staffMember in staff %}
+                        <tr class="danger">
+                            <td colspan="2"><b>{{ staffMember.name }}</b></td>
+                            {% for i in week %}
+                                {% if staffMember.availability[loop.index - 1] is defined %}
+                                    <td class="success">Available</td>
+                                {% else %}
+                                    <td class="danger">Not available</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
                     {% endfor %}
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-2">
+            </div>
+        </div>
     </div>
+    <hr/>
     <div id="calendar-list-view">
         <table id="cal-list">
             <tbody>
