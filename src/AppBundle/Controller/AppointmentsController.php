@@ -126,6 +126,7 @@ class AppointmentsController extends Controller
 //            }
         }
 
+
         return $this->render(
             '@App/appointments.html.twig',
             [
