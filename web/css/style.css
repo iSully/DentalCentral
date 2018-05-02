@@ -397,6 +397,24 @@ button#cal-list-view-btn {
     margin-bottom: 10px;
 }
 
-li#availability{
-    text-align:left;
+li#availability {
+    text-align: left;
 }
+
+footer.page-footer {
+    background-color: #87ceeb;
+    display:inline-block;
+    border:2px black solid;
+    margin-top:100px !important;
+    /*position:absolute;*/
+    float:bottom;
+    width:100%;
+    left:0;
+    bottom:0;
+    overflow:hidden;
+
+}
+
+/*body{*/
+    /*margin:0 0 80px;*/
+/*}*/

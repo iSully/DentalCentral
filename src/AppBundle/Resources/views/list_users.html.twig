@@ -26,7 +26,6 @@
                 </td>
                 <td>
                     {{ user.role }}
-                    {#{{ user.roles[0][5:]}}#}
                 </td>
                 <td>
                     <a href="{{ path('edit_user', {'id': user.id }) }}">Edit User</a>
@@ -39,5 +38,4 @@
         </tbody>
     </table>
     <div>
-
 {% endblock %}

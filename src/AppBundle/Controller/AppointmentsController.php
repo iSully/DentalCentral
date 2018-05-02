@@ -45,7 +45,7 @@ class AppointmentsController extends Controller
                     return $this->deleteAction($request, $appointmentId);
 
                 }
-
+                //Update appointment upon editing
                 $newAppointment = $appointment;
                 $appointment = $repository->findOneBy(['id' => $appointmentId]);
                 $appointment->setDentist($newAppointment->getDentist());
@@ -63,6 +63,7 @@ class AppointmentsController extends Controller
             if ($appointment->getStart() > $appointment->getEnd()) {
                 $error = 'Cannot have an appointment end before it\'s selected start time';
             }
+            //Check staff availability for new appointment
             foreach ($repository->findAll() as $a) {
 
                 if ($error === null && $appointmentId === null || $a->getId() !== $appointmentId) {
@@ -101,6 +102,7 @@ class AppointmentsController extends Controller
         /** @var Appointment[] $appointments */
         $appointments = $repository->findAll();
 
+        //Check for any returned errors
         $returnedError = null;
         if (($sessionError = $this->get('session')->getFlashBag()->get('errors')) !== null && count(
                 $sessionError
@@ -118,15 +120,6 @@ class AppointmentsController extends Controller
                 $staff[] = $user;
             }
         }
-        //TODO: Create Associative Array to Store Available Days and Build Table w/Glyphicons for Availability
-        $availabilities = [];
-        foreach ($staff as $s) {
-//            foreach($s->availability as $availableDay){
-//
-//            }
-        }
-
-
         return $this->render(
             '@App/appointments.html.twig',
             [
@@ -151,8 +144,8 @@ class AppointmentsController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $entityManager->getRepository("AppBundle:Appointment");
         $appointment = $repository->find($appointmentId);
+        //Set cancelled appointments to "inactive"
         $appointment->setActive(false);
-//        $entityManager->remove($appointment);
         $entityManager->flush();
 
         return $this->redirectToRoute('appointments');
