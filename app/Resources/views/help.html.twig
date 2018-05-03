@@ -1,6 +1,12 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
+    {% if confirmed %}
+    <div class="alert alert-success" role="alert">
+        Thank you for getting into contact. We will get back to you as soon as possible!
+    </div>
+    {% endif %}
+
     <div class="panel-group" id="accordion">
         <h1>User FAQ's</h1>
         <div class="panel panel-default">
@@ -57,8 +63,10 @@
                 </h4>
             </div>
             <div id="collapse4" class="panel-collapse collapse">
-                <div class="panel-body">To schedule and cancel appointments, please <strong>call your dental facility </strong> or
-                       <strong>Email</strong> them by clicking <input id="signinhelp" type="submit" value="Here" onclick="window.location='/contact'"/></div>
+                <div class="panel-body">To schedule and cancel appointments, please <strong>call your dental
+                        facility </strong> or
+                    <strong>Email</strong> them by clicking <input id="signinhelp" type="submit" value="Here"
+                                                                   onclick="window.location='/contact'"/></div>
             </div>
         </div>
         <div class="panel panel-default">
@@ -77,41 +85,46 @@
                 </div>
             </div>
         </div>
-        <script>
-            {% if app.user.role == "Admin" %}
-            $("div.panel-group").append("<br>");
-            $("div.panel-group").append("<h1>Admin FAQ's</h1>");
-            $("div.panel-group").append("<div class=\"panel panel-default\">\n" +
-                "            <div class=\"panel-heading\">\n" +
-                "                <h4 class=\"panel-title\">\n" +
-                "                    <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\">\n" +
-                "                        How Do I Add/Remove/Edit Users?</a>\n" +
-                "                </h4>\n" +
-                "            </div>\n" +
-                "            <div id=\"collapse6\" class=\"panel-collapse collapse\">\n" +
-                "                <div class=\"panel-body\"><strong>To Add A New User/Staff Member</strong> , click <input id=\"signinhelp\" type=\"submit\" value=\"Here\"\n" +
-                "                                                                    onclick=\"window.location='/users/add'\"/></div> <strong>To View All Users And Edit/Delete Their Accounts</strong>, click  <input id=\"signinhelp\" type=\"submit\" value=\"Here\"\n" +
-                "                                                                    onclick=\"window.location='/users/list'\"/>\n" +
-                "            </div>\n" +
-                "        </div>");
-
-            $("div.panel-group").append("<div class=\"panel panel-default\">\n" +
-                "            <div class=\"panel-heading\">\n" +
-                "                <h4 class=\"panel-title\">\n" +
-                "                    <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse7\">\n" +
-                "                        How Do I Add/Remove/Edit Appointments?</a>\n" +
-                "                </h4>\n" +
-                "            </div>\n" +
-                "            <div id=\"collapse7\" class=\"panel-collapse collapse\">\n" +
-                "                <div class=\"panel-body\"><strong>To Add New Appointments, First Click </strong> <input id=\"signinhelp\" type=\"submit\" value=\"Here\"\n" +
-                "                                       onclick=\"window.location='/appointments'\"/> and simply click and drag on the calendar to begin adding a new appointment. Upon selecting a time slot, you will be asked to provide details regarding the appointment. Once you are done, press \"Submit\" and your new appointment will be added to the system and calendar! <br> <strong>To Cancel/Remove Appointments</strong>, simply click on the desired appointment on the schedule and click delete! A confirmation message will be sent to the user. <br> <strong>To Edit Existing Appointments </strong>, simply click the desired appointment and edit the details. Once you have made the necessary changes, press Submit" +
-                "            </div>\n" +
-                "        </div>");
-
-            {% endif %}
-        </script>
+    </div>
+    <div>
+        <h1>Any further questions?</h1>
+        <h3><a href="{{ path('email') }}">Get in contact</a></h3>
     </div>
 {% endblock %}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script>
+        {% if app.user.role == "Admin" %}
+        $("div.panel-group").append("<br>");
+        $("div.panel-group").append("<h1>Admin FAQ's</h1>");
+        $("div.panel-group").append("<div class=\"panel panel-default\">\n" +
+            "            <div class=\"panel-heading\">\n" +
+            "                <h4 class=\"panel-title\">\n" +
+            "                    <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\">\n" +
+            "                        How Do I Add/Remove/Edit Users?</a>\n" +
+            "                </h4>\n" +
+            "            </div>\n" +
+            "            <div id=\"collapse6\" class=\"panel-collapse collapse\">\n" +
+            "                <div class=\"panel-body\"><strong>To Add A New User/Staff Member</strong> , click <input id=\"signinhelp\" type=\"submit\" value=\"Here\"\n" +
+            "                                                                    onclick=\"window.location='/users/add'\"/></div> <strong>To View All Users And Edit/Delete Their Accounts</strong>, click  <input id=\"signinhelp\" type=\"submit\" value=\"Here\"\n" +
+            "                                                                    onclick=\"window.location='/users/list'\"/>\n" +
+            "            </div>\n" +
+            "        </div>");
+
+        $("div.panel-group").append("<div class=\"panel panel-default\">\n" +
+            "            <div class=\"panel-heading\">\n" +
+            "                <h4 class=\"panel-title\">\n" +
+            "                    <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse7\">\n" +
+            "                        How Do I Add/Remove/Edit Appointments?</a>\n" +
+            "                </h4>\n" +
+            "            </div>\n" +
+            "            <div id=\"collapse7\" class=\"panel-collapse collapse\">\n" +
+            "                <div class=\"panel-body\"><strong>To Add New Appointments, First Click </strong> <input id=\"signinhelp\" type=\"submit\" value=\"Here\"\n" +
+            "                                       onclick=\"window.location='/appointments'\"/> and simply click and drag on the calendar to begin adding a new appointment. Upon selecting a time slot, you will be asked to provide details regarding the appointment. Once you are done, press \"Submit\" and your new appointment will be added to the system and calendar! <br> <strong>To Cancel/Remove Appointments</strong>, simply click on the desired appointment on the schedule and click delete! A confirmation message will be sent to the user. <br> <strong>To Edit Existing Appointments </strong>, simply click the desired appointment and edit the details. Once you have made the necessary changes, press Submit" +
+            "            </div>\n" +
+            "        </div>");
+
+        {% endif %}
+    </script>
+{% endblock %}
 
