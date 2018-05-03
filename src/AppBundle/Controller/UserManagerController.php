@@ -117,7 +117,16 @@ class UserManagerController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository("AppBundle:Appointment");
         $user = $entityManager->getRepository("AppBundle:User")->findOneBy(['id' => $id]);
+        $userAppointments = $repository->findBy(
+            ['user' => $entityManager->getRepository('AppBundle:User')->findBy(['id' => $id])]
+        );
+        if ($user->getAppointments() !== null) {
+            foreach ($userAppointments as $a) {
+                $entityManager->remove($a);
+            }
+        }
         $entityManager->remove($user);
         $entityManager->flush();
 

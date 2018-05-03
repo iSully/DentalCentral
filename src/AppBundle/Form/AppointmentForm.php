@@ -76,6 +76,8 @@ class AppointmentForm extends AbstractType
                         'Tooth Removal' => 'Tooth Removal',
                         'Surgery' => 'Surgery',
                         'Tooth Implant' => 'Tooth Implant',
+                        'Root Canal I' => 'Root Canal I',
+                        'Root Canal II' => 'Root Canal II',
                     ],
                 ]
             )

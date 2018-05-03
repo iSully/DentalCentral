@@ -23,7 +23,7 @@
             var title = 'CANCELLED';
             inactiveCount++;
             {% else %}
-            var title = '{{ appointment.type }} - {{ appointment.user.name }} \n  D: {{ appointment.dentist.name }}';
+            var title = '{{ appointment.type }} - {{ appointment.user.name }} \n  D: {{ appointment.dentist.name }} \n H: {{ appointment.hygienist.name }}';
             var color = '#' + ({{ appointment.user.id / 25000 }} * 0xFFFFFF << 0
             ).toString(16);
             {% endif %}
@@ -44,7 +44,8 @@
             {% endfor %}
             if (inactiveCount > 0) {
                 $('<div class=\"alert alert-danger\" role=\"alert\"></div>').insertAfter('h1');
-                $("div.alert-danger").html('<p>You have one or more appointments that have been cancelled. Please contact your Dentist\'s office to reschedule an appointment!</p>');
+                $("div.alert-danger").html('<p>You have one or more appointments that have been cancelled. Please contact your Dentist\'s office to reschedule an appointment! Click <input id="signinhelp" type="submit" value="Here"\n' +
+                    '                                                                   onclick="window.location=\'/contact\'"/> to send an email.</p>');
                 $('<a href=\"{{ path('clearCancelled') }}\"><button class=\"btn btn-primary\" id=\"clearCancelled\">Click Here To Remove All Cancelled Appointments From My Calendar</button></a>').insertAfter('div.alert-danger');
             }
         </script>

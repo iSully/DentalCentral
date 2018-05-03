@@ -42,7 +42,8 @@
                             <td colspan="2"><b>{{ staffMember.name }}</b></td>
                             {% for i in week %}
                                 {% if staffMember.availability[loop.index - 1] is defined %}
-                                    <td class="success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                    <td class="success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </td>
                                 {% else %}
                                     <td class="danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                                 {% endif %}
@@ -179,7 +180,7 @@
             {
                 id: '{{ appointment.id }}',
                 //TODO: Find way to display  - D: {{ appointment.dentist }} - H: {{ appointment.hygienist }} - C: {{ appointment.user.name }} cleanly in title
-                title: '{{ appointment.type }} \n Client: {{ appointment.user.name }} \n D: {{ appointment.dentist.username }} \n H: {{ appointment.hygienist.username }}',
+                title: '{{ appointment.type }} \n Client: {{ appointment.user.name }} \n D: {{ appointment.dentist.name }} \n H: {{ appointment.hygienist.name }}',
                 start: '{{ appointment.start|date('Y-m-dTH:i') }}',
                 end: '{{ appointment.end|date('Y-m-dTH:i') }}',
                 dentist: '{{ appointment.dentist.id }}',
