@@ -291,10 +291,6 @@ li.nav-register {
     float: right;
 }
 
-a:hover:not(.active) {
-    background-color: #111;
-}
-
 .active {
     background-color: #87ceeb;
 }
@@ -415,6 +411,12 @@ footer.page-footer {
 
 }
 
-/*body{*/
-    /*margin:0 0 80px;*/
-/*}*/
+div.faq{
+    border:1px black solid;
+    margin-bottom:15px;
+}
+
+input#signinhelp{
+    color:black;
+    background-color:#87ceeb;
+}

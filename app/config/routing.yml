@@ -21,7 +21,7 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-test_help:
+help:
     path: /help
     defaults:
         _controller: FrameworkBundle:Template:template

@@ -38,13 +38,13 @@
                     </thead>
                     <tbody>
                     {% for staffMember in staff %}
-                        <tr class="danger">
+                        <tr>
                             <td colspan="2"><b>{{ staffMember.name }}</b></td>
                             {% for i in week %}
                                 {% if staffMember.availability[loop.index - 1] is defined %}
-                                    <td class="success">Available</td>
+                                    <td class="success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                                 {% else %}
-                                    <td class="danger">Not available</td>
+                                    <td class="danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                                 {% endif %}
                             {% endfor %}
                         </tr>
