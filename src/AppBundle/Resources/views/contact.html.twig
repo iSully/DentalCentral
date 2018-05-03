@@ -2,6 +2,37 @@
 
 {% block body %}
 
-    <h1>Contact Your Dentist Facility</h1><br>
-    <textarea rows="13" cols="80" placeholder="Enter Your Message Here"></textarea>
+    <div class="container">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-area">
+                {{ form_start(form) }}
+
+                <br style="clear:both">
+                <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
+
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+                    {{ form_row(form.name) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(form.email) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(form.title) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(form.message) }}
+                </div>
+
+                <input type="submit" id="submit" name="Submit form" class="btn btn-primary pull-right"/>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
 {% endblock %}
