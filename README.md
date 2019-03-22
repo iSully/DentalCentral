@@ -1,4 +1,4 @@
-341 Project
+DentalCentral
 ===========
 
 A Symfony project created on March 16, 2018, 4:52 pm.
